@@ -1,0 +1,3515 @@
+{ 
+    "package": "EventbriteAPI",
+    "tagline": "Eventbrite API Wrapper",
+    "description": "The Eventbrite API is the best way to integrate and extend Eventbrite for your event or organising needs.",
+    "image": "http://logo.clearbit.com/eventbrite.com",
+    "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-EventbriteAPI-package",
+    "accounts": {
+        "domain": "eventbrite.com",
+        "credentials": [
+            "token"
+        ]
+    },
+    "blocks": [{
+        "name":"getCategories",
+        "description": "Returns a list of category as categories, including subcategories nested.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSingleCategory",
+        "description": "Gets a category by ID as category.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "categoryId",
+                "type": "String",
+                "info": "Required: The ID of the category."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSubcategories",
+        "description": "Returns a list of subcategory as subcategories.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSingleSubcategory",
+        "description": "Gets a subcategory by ID as subcategory.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "subcategoryId",
+                "type": "String",
+                "info": "Required: The ID of the subcategory."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getFormats",
+        "description": "Returns a list of format as formats.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSingleFormat",
+        "description": "Gets a format by ID as format.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "formatId",
+                "type": "String",
+                "info": "Required: The ID of the format."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getMedia",
+        "description": "Return an image for a given id.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "mediaId",
+                "type": "String",
+                "info": "Required: The ID of the media."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"uploadMedia",
+        "description": "Upload media.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "type",
+                "type": "String",
+                "info": "Required: The type of image to upload (Valid choices are: image-event-logo, image-event-view-from-seat, image-organizer-logo, image-user-photo, or image-structured-content)."
+            }, {
+                "name": "file",
+                "type": "String",
+                "info": "Required: The file to upload."
+            }, {
+                "name": "cropTopLeftX",
+                "type": "String",
+                "info": "Optional: X coordinate for top-left corner of crop mask."
+            }, {
+                "name": "cropTopLeftY",
+                "type": "String",
+                "info": "Optional: Y coordinate for top-left corner of crop mask."
+            }, {
+                "name": "cropWidth",
+                "type": "String",
+                "info": "Optional: Crop mask width."
+            }, {
+                "name": "cropHeight",
+                "type": "String",
+                "info": "Optional: Crop mask height."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getOrder",
+        "description": "Gets an order by ID as the key order.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "orderId",
+                "type": "String",
+                "info": "Required: The ID of the order."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSalesReport",
+        "description": "Returns a response of the aggregate sales data.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventIds",
+                "type": "String",
+                "info": "Optional: List of public event IDs to report on."
+            }, {
+                "name": "eventStatus",
+                "type": "String",
+                "info": "Optional: Event status to filter down results by (Valid choices are: all, live, or ended)."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Optional start date to query."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Optional end date to query."
+            }, {
+                "name": "period",
+                "type": "String",
+                "info": "Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet."
+            }, {
+                "name": "filterBy",
+                "type": "String",
+                "info": "Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}"
+            }, {
+                "name": "groupBy",
+                "type": "String",
+                "info": "Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source)."
+            }, {
+                "name": "dateFacet",
+                "type": "String",
+                "info": "Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none)."
+            }, {
+                "name": "timezone",
+                "type": "String",
+                "info": "Optional: Optional timezone. If unspecified picks the TZ of the first event."
+            }, {
+                "name": "randomSeed",
+                "type": "String",
+                "info": "Optional: Random seed for dataset (default = 0). Aids in determinism."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getAttendeesReport",
+        "description": "Returns a response of the aggregate attendees data.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventIds",
+                "type": "String",
+                "info": "Optional: List of public event IDs to report on."
+            }, {
+                "name": "eventStatus",
+                "type": "String",
+                "info": "Optional: Event status to filter down results by (Valid choices are: all, live, or ended)."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Optional start date to query."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Optional end date to query."
+            }, {
+                "name": "period",
+                "type": "String",
+                "info": "Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet."
+            }, {
+                "name": "filterBy",
+                "type": "String",
+                "info": "Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}"
+            }, {
+                "name": "groupBy",
+                "type": "String",
+                "info": "Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source)."
+            }, {
+                "name": "dateFacet",
+                "type": "String",
+                "info": "Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none)."
+            }, {
+                "name": "timezone",
+                "type": "String",
+                "info": "Optional: Optional timezone. If unspecified picks the TZ of the first event."
+            }, {
+                "name": "randomSeed",
+                "type": "String",
+                "info": "Optional: Random seed for dataset (default = 0). Aids in determinism."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getTimezones",
+        "description": "Returns a response with a key of timezones, containing a list of timezones.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getRegions",
+        "description": "Returns a single page response with a key of regions, containing a list of regions.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getCountries",
+        "description": "Returns a single page response with a key of countries, containing a list of countries.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createOrganizer",
+        "description": "Makes a new organizer. Returns an organizer as organizer.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "organizerName",
+                "type": "String",
+                "info": "Required: The name of the organizer"
+            }, {
+                "name": "organizerDescription",
+                "type": "String",
+                "info": "Optional: The description of the organizer"
+            }, {
+                "name": "organizerLongDescription",
+                "type": "String",
+                "info": "Optional: The long description of the organizer"
+            }, {
+                "name": "organizerLogoId",
+                "type": "String",
+                "info": "Optional: The logo id of the organizer"
+            }, {
+                "name": "organizerWebsite",
+                "type": "String",
+                "info": "Optional: The website for the organizer"
+            }, {
+                "name": "organizerTwitter",
+                "type": "String",
+                "info": "Optional: The Twitter handle for the organizer"
+            }, {
+                "name": "organizerFacebook",
+                "type": "String",
+                "info": "Optional: The Facebook URL ID for the organizer"
+            }, {
+                "name": "organizerInstagram",
+                "type": "String",
+                "info": "Optional: The Instagram numeric ID for the organizer"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateOrganizer",
+        "description": "Updates an organizer and returns it as as organizer.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "organizerId",
+                "type": "String",
+                "info": "Required: The id of the organizer"
+            }, {
+                "name": "organizerName",
+                "type": "String",
+                "info": "Required: The name of the organizer"
+            }, {
+                "name": "organizerDescription",
+                "type": "String",
+                "info": "Optional: The description of the organizer"
+            }, {
+                "name": "organizerLongDescription",
+                "type": "String",
+                "info": "Optional: The long description of the organizer"
+            }, {
+                "name": "organizerLogoId",
+                "type": "String",
+                "info": "Optional: The logo id of the organizer"
+            }, {
+                "name": "organizerWebsite",
+                "type": "String",
+                "info": "Optional: The website for the organizer"
+            }, {
+                "name": "organizerTwitter",
+                "type": "String",
+                "info": "Optional: The Twitter handle for the organizer"
+            }, {
+                "name": "organizerFacebook",
+                "type": "String",
+                "info": "Optional: The Facebook URL ID for the organizer"
+            }, {
+                "name": "organizerInstagram",
+                "type": "String",
+                "info": "Optional: The Instagram numeric ID for the organizer"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getOrganizer",
+        "description": "Gets an organizer by ID as organizer.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "organizerId",
+                "type": "String",
+                "info": "Required: The id of the organizer"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getOrganizerEvents",
+        "description": "Gets events of the organizer.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "organizerId",
+                "type": "String",
+                "info": "Required: The id of the organizer"
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Only return events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended."
+            }, {
+                "name": "orderBy",
+                "type": "String",
+                "info": "Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)."
+            }, {
+                "name": "startRangeDate",
+                "type": "String",
+                "info": "Optional: Only return events with start dates after the given date."
+            }, {
+                "name": "endRangeDate",
+                "type": "String",
+                "info": "Optional: Only return events with start dates before the given date."
+            }, {
+                "name": "onlyPublic",
+                "type": "String",
+                "info": "Optional: Only show public events even if viewing your own events. True or false."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getVenue",
+        "description": "Returns a venue object.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "venueId",
+                "type": "String",
+                "info": "Required: The id of the venue."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateVenue",
+        "description": "Updates a venue and returns it as an object.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "venueId",
+                "type": "String",
+                "info": "Required: The id of the venue."
+            }, {
+                "name": "venueName",
+                "type": "String",
+                "info": "Optional: The name of the venue."
+            }, {
+                "name": "venueAddressLatitude",
+                "type": "String",
+                "info": "Optional: The latitude of the coordinates for the venue."
+            }, {
+                "name": "venueAddressLongitude",
+                "type": "String",
+                "info": "Optional: The longitude of the coordinates for the venue."
+            }, {
+                "name": "venueOrganizerId",
+                "type": "String",
+                "info": "Optional: The organizer this venue belongs to (optional - leave this off to use the default organizer)."
+            }, {
+                "name": "venueAddress1",
+                "type": "String",
+                "info": "Optional: The first line of the address."
+            }, {
+                "name": "venueAddress2",
+                "type": "String",
+                "info": "Optional: The second line of the address."
+            }, {
+                "name": "venueCity",
+                "type": "String",
+                "info": "Optional: The city where the venue is."
+            }, {
+                "name": "venueRegion",
+                "type": "String",
+                "info": "Optional: The region where the venue is."
+            }, {
+                "name": "venuePostalCode",
+                "type": "String",
+                "info": "Optional: The postal code where the venue is."
+            }, {
+                "name": "venueCountry",
+                "type": "String",
+                "info": "Optional: The country where the venue is."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createVenue",
+        "description": "Creates a new venue with associated address.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "venueName",
+                "type": "String",
+                "info": "Required: The name of the venue."
+            }, {
+                "name": "venueAddressLatitude",
+                "type": "String",
+                "info": "Optional: The latitude of the coordinates for the venue."
+            }, {
+                "name": "venueAddressLongitude",
+                "type": "String",
+                "info": "Optional: The longitude of the coordinates for the venue."
+            }, {
+                "name": "venueOrganizerId",
+                "type": "String",
+                "info": "Optional: The organizer this venue belongs to (optional - leave this off to use the default organizer)."
+            }, {
+                "name": "venueAddress1",
+                "type": "String",
+                "info": "Optional: The first line of the address."
+            }, {
+                "name": "venueAddress2",
+                "type": "String",
+                "info": "Optional: The second line of the address."
+            }, {
+                "name": "venueCity",
+                "type": "String",
+                "info": "Optional: The city where the venue is."
+            }, {
+                "name": "venueRegion",
+                "type": "String",
+                "info": "Optional: The region where the venue is."
+            }, {
+                "name": "venuePostalCode",
+                "type": "String",
+                "info": "Optional: The postal code where the venue is."
+            }, {
+                "name": "venueCountry",
+                "type": "String",
+                "info": "Optional: The country where the venue is."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getVenueEvents",
+        "description": "Returns events of a given venue.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "venueId",
+                "type": "String",
+                "info": "Required: The ID of the venue."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Only return events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended."
+            }, {
+                "name": "orderBy",
+                "type": "String",
+                "info": "Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)."
+            }, {
+                "name": "startRangeDate",
+                "type": "String",
+                "info": "Optional: Only return events with start dates after the given date."
+            }, {
+                "name": "endRangeDate",
+                "type": "String",
+                "info": "Optional: Only return events with start dates before the given date."
+            }, {
+                "name": "onlyPublic",
+                "type": "String",
+                "info": "Optional: Only show public events even if viewing your own events."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSingleWebhook",
+        "description": "Returns a webhook for the specified webhook as webhook.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "webhookId",
+                "type": "String",
+                "info": "Required: The ID of the webhook."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createWebhook",
+        "description": "Creates a webhook for the authenticated user.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "endpointUrl",
+                "type": "String",
+                "info": "Required: The target URL of the Webhook subscription."
+            }, {
+                "name": "actions",
+                "type": "String",
+                "info": "Optional: Determines what actions will trigger the webhook. If no value is sent for this param, it selects order.placed, event.published, and event.unpublished by default."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Optional: The ID of the event that triggers this webhook. Leave blank for all events."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getWebhooks",
+        "description": "Returns the list of webhook objects that belong to the authenticated user.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteWebhook",
+        "description": "Deletes the specified webhook object.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "webhookId",
+                "type": "String",
+                "info": "Required: The ID of the webhook."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUser",
+        "description": "Returns a user for the specified user as user.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserOrders",
+        "description": "Returns a user for the specified user as user.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "changedSince",
+                "type": "String",
+                "info": "Optional: Only return resource changed on or after the time given."
+            }, {
+                "name": "timeFilter",
+                "type": "String",
+                "info": "Optional: Limits results to either past or current & future events / orders. (Valid choices are: all, past, or current_future)."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserVenues",
+        "description": "Returns a response of venue objects that are owned by the user.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserOrganizers",
+        "description": "Returns a response of organizer objects that are owned by the user.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserOwnedEvents",
+        "description": "Returns a response of events, under the key events, of all events the user owns (i.e. events they are organising).",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "orderBy",
+                "type": "String",
+                "info": "Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)."
+            }, {
+                "name": "showSeriesParent",
+                "type": "String",
+                "info": "Optional: True: Will show parent of a serie instead of children False: Will show children of a serie (Default value)."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Filter by events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserEvents",
+        "description": "Returns a response of events, under the key events, of all events the user has access to.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "nameFilter",
+                "type": "String",
+                "info": "Optional: Filter event results by name."
+            }, {
+                "name": "orderBy",
+                "type": "String",
+                "info": "Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)."
+            }, {
+                "name": "showSeriesParent",
+                "type": "String",
+                "info": "Optional: True: Will show parent of a serie instead of children False: Will show children of a serie (Default value)."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Filter by events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended."
+            }, {
+                "name": "eventGroupId",
+                "type": "String",
+                "info": "Optional: Filter event results by eventGroupId"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserOwnedEventAttendees",
+        "description": "Returns a response of attendees, under the key attendees, of attendees visiting any of the events the user owns.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Limits results to either confirmed attendees or cancelled/refunded/etc. attendees (Valid choices are: attending, or not_attending)."
+            }, {
+                "name": "changedSince",
+                "type": "String",
+                "info": "Optional: Only return resource changed on or after the time given."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserOwnedEventOrders",
+        "description": "Returns a response of orders, under the key orders, of orders placed against any of the events the user owns.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Filter to active (attending), inactive (not attending), or all (both) orders (Valid choices are: active, inactive, or all)."
+            }, {
+                "name": "onlyEmails",
+                "type": "String",
+                "info": "Optional: Only include orders placed by one of these emails."
+            }, {
+                "name": "excludeEmails",
+                "type": "String",
+                "info": "Optional: Don’t include orders placed by any of these emails."
+            }, {
+                "name": "changedSince",
+                "type": "String",
+                "info": "Optional: Only return resource changed on or after the time given."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserContactLists",
+        "description": "Returns a list of contact_list that the user owns as the key contact_lists.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createUserContactList",
+        "description": "Makes a new contact_list for the user and returns it as contact_list.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "contactListName",
+                "type": "String",
+                "info": "Required: Name of the new contact list."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateContactList",
+        "description": "Updates the contact_list and returns it as contact_list.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "contactListId",
+                "type": "String",
+                "info": "Required: The ID of the contact list."
+            }, {
+                "name": "contactListName",
+                "type": "String",
+                "info": "Required: Name of the new contact list."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteUserContactList",
+        "description": "Deletes the contact list. Returns {\"deleted\": true}.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "contactListId",
+                "type": "String",
+                "info": "Required: The ID of the contact list."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getContactListContacts",
+        "description": "Returns the contacts on the contact list as contacts.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "contactListId",
+                "type": "String",
+                "info": "Required: The ID of the contact list."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"addContactToContactList",
+        "description": "Adds a new contact to the contact list. Returns {\"created\": true}. There is no way to update entries in the list; just delete the old one and add the updated version.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "contactListId",
+                "type": "String",
+                "info": "Required: The ID of the contact list."
+            }, {
+                "name": "contactEmail",
+                "type": "String",
+                "info": "Required: Contact email address."
+            }, {
+                "name": "contactFirstName",
+                "type": "String",
+                "info": "Optional: Contact first name (or full name)."
+            }, {
+                "name": "contactLastName",
+                "type": "String",
+                "info": "Optional: Contact last name."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteContactFromContactList",
+        "description": "Deletes the specified contact from the contact list. Returns {\"deleted\": true}.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "contactListId",
+                "type": "String",
+                "info": "Required: The ID of the contact list."
+            }, {
+                "name": "email",
+                "type": "String",
+                "info": "Required: Contact email address."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getUserBookmarks",
+        "description": "Gets all the user’s saved events. In order to update the saved events list, the user must unsave or save each event. A user is authorized to only see his/her saved events.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "bookmarkListId",
+                "type": "String",
+                "info": "Optional: Optional bookmark list id to fetch all bookmarks from."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createBookmark",
+        "description": "Adds a new bookmark for the user. Returns {\"created\": true}. A user is only authorized to save his/her own events.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Optional: Event id to bookmark for the user."
+            }, {
+                "name": "eventIds",
+                "type": "String",
+                "info": "Optional: Event ids to batch bookmark for the user."
+            }, {
+                "name": "bookmarkListId",
+                "type": "String",
+                "info": "Optional: Optional Bookmark list id to save the bookmark(s) to."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteBookmark",
+        "description": "Removes the specified bookmark from the event for the user. Returns {\"deleted\": true}. A user is only authorized to unsave his/her own events.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Required: The ID of the user. If you want to get details about the currently authenticated user, use \"me\" value."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Optional: Event id to bookmark for the user."
+            }, {
+                "name": "eventIds",
+                "type": "String",
+                "info": "Optional: Event ids to batch bookmark for the user."
+            }, {
+                "name": "bookmarkListId",
+                "type": "String",
+                "info": "Optional: Optional Bookmark list id to save the bookmark(s) to."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createEventSeries",
+        "description": "Creates a new repeating event series. The POST data must include information for at least one event date in the series.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "seriesParentName",
+                "type": "String",
+                "info": "Required: The name of the event."
+            }, {
+                "name": "seriesParentDescription",
+                "type": "String",
+                "info": "Optional: The description on the event page."
+            }, {
+                "name": "seriesParentOrganizerId",
+                "type": "String",
+                "info": "Optional: The ID of the organizer of this event."
+            }, {
+                "name": "seriesParentStartUtc",
+                "type": "String",
+                "info": "Required: The start time of the event."
+            }, {
+                "name": "seriesParentStartTimezone",
+                "type": "String",
+                "info": "Required: Start time timezone (Olson format)."
+            }, {
+                "name": "seriesParentEndUtc",
+                "type": "String",
+                "info": "Required: The end time of the event."
+            }, {
+                "name": "seriesParentEndTimezone",
+                "type": "String",
+                "info": "Required: End time timezone (Olson format)."
+            }, {
+                "name": "seriesParentHideStartDate",
+                "type": "String",
+                "info": "Optional: Whether the start date should be hidden. True or false."
+            }, {
+                "name": "seriesParentHideEndDate",
+                "type": "String",
+                "info": "Optional: Whether the end date should be hidden. True or false."
+            }, {
+                "name": "seriesParentCurrency",
+                "type": "String",
+                "info": "Required: Event currency (3 letter code)."
+            }, {
+                "name": "seriesParentVenueId",
+                "type": "String",
+                "info": "Optional: ID of the venue."
+            }, {
+                "name": "seriesParentOnlineEvent",
+                "type": "String",
+                "info": "Optional: Is the event online-only (no venue)?. True or false."
+            }, {
+                "name": "seriesParentListed",
+                "type": "String",
+                "info": "Optional: If the event is publicly listed and searchable. Defaults to true."
+            }, {
+                "name": "seriesParentLogoId",
+                "type": "String",
+                "info": "Optional: The logo for the event."
+            }, {
+                "name": "seriesParentCategoryId",
+                "type": "String",
+                "info": "Optional: The category (vertical) of the event."
+            }, {
+                "name": "seriesParentSubcategoryId",
+                "type": "String",
+                "info": "Optional: The subcategory of the event (US only)."
+            }, {
+                "name": "seriesParentFormatId",
+                "type": "String",
+                "info": "Optional: The format (general type) of the event."
+            }, {
+                "name": "seriesParentShareable",
+                "type": "String",
+                "info": "Optional: If users can share the event on social media."
+            }, {
+                "name": "seriesParentInviteOnly",
+                "type": "String",
+                "info": "Optional: Only invited users can see the event page."
+            }, {
+                "name": "seriesParentPassword",
+                "type": "String",
+                "info": "Optional: Password needed to see the event in unlisted mode."
+            }, {
+                "name": "seriesParentCapacity",
+                "type": "String",
+                "info": "Optional: Set specific capacity (if omitted, sums ticket capacities)."
+            }, {
+                "name": "seriesParentShowRemaining",
+                "type": "String",
+                "info": "Optional: If the remaining number of tickets is publicly visible on the event page."
+            }, {
+                "name": "createChildren",
+                "type": "JSON",
+                "info": "Required: A list of dates for which child events should be created. In the format: [{ \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }, { ... }, ...]"
+            }, {
+                "name": "updateChildren",
+                "type": "JSON",
+                "info": "Optional: A map of event IDs to modified date objects for updating child events."
+            }, {
+                "name": "deleteChildren",
+                "type": "JSON",
+                "info": "Optional: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventSerie",
+        "description": "Returns a repeating event series parent object for the specified repeating event series.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }, {
+                "name": "trackingСode",
+                "type": "String",
+                "info": "Optional: Append the given tracking_code to the event URLs returned."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"changeEventSerie",
+        "description": "Updates a repeating event series parent object, and optionally also creates more event dates or updates or deletes existing event dates in the series. In order for a series date to be deleted or updated, there must be no pending or completed orders for that date.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }, {
+                "name": "seriesParentName",
+                "type": "String",
+                "info": "Required: The name of the event."
+            }, {
+                "name": "seriesParentDescription",
+                "type": "String",
+                "info": "Optional: The description on the event page."
+            }, {
+                "name": "seriesParentOrganizerId",
+                "type": "String",
+                "info": "Optional: The ID of the organizer of this event."
+            }, {
+                "name": "seriesParentStartUtc",
+                "type": "String",
+                "info": "Required: The start time of the event."
+            }, {
+                "name": "seriesParentStartTimezone",
+                "type": "String",
+                "info": "Required: Start time timezone (Olson format)."
+            }, {
+                "name": "seriesParentEndUtc",
+                "type": "String",
+                "info": "Required: The end time of the event."
+            }, {
+                "name": "seriesParentEndTimezone",
+                "type": "String",
+                "info": "Required: End time timezone (Olson format)."
+            }, {
+                "name": "seriesParentHideStartDate",
+                "type": "String",
+                "info": "Optional: Whether the start date should be hidden. True or false."
+            }, {
+                "name": "seriesParentHideEndDate",
+                "type": "String",
+                "info": "Optional: Whether the end date should be hidden. True or false."
+            }, {
+                "name": "seriesParentCurrency",
+                "type": "String",
+                "info": "Required: Event currency (3 letter code)."
+            }, {
+                "name": "seriesParentVenueId",
+                "type": "String",
+                "info": "Optional: ID of the venue."
+            }, {
+                "name": "seriesParentOnlineEvent",
+                "type": "String",
+                "info": "Optional: Is the event online-only (no venue)?. True or false."
+            }, {
+                "name": "seriesParentListed",
+                "type": "String",
+                "info": "Optional: If the event is publicly listed and searchable. Defaults to true."
+            }, {
+                "name": "seriesParentLogoId",
+                "type": "String",
+                "info": "Optional: The logo for the event."
+            }, {
+                "name": "seriesParentCategoryId",
+                "type": "String",
+                "info": "Optional: The category (vertical) of the event."
+            }, {
+                "name": "seriesParentSubcategoryId",
+                "type": "String",
+                "info": "Optional: The subcategory of the event (US only)."
+            }, {
+                "name": "seriesParentFormatId",
+                "type": "String",
+                "info": "Optional: The format (general type) of the event."
+            }, {
+                "name": "seriesParentShareable",
+                "type": "String",
+                "info": "Optional: If users can share the event on social media."
+            }, {
+                "name": "seriesParentInviteOnly",
+                "type": "String",
+                "info": "Optional: Only invited users can see the event page."
+            }, {
+                "name": "seriesParentPassword",
+                "type": "String",
+                "info": "Optional: Password needed to see the event in unlisted mode."
+            }, {
+                "name": "seriesParentCapacity",
+                "type": "String",
+                "info": "Optional: Set specific capacity (if omitted, sums ticket capacities)."
+            }, {
+                "name": "seriesParentShowRemaining",
+                "type": "String",
+                "info": "Optional: If the remaining number of tickets is publicly visible on the event page."
+            }, {
+                "name": "createChildren",
+                "type": "JSON",
+                "info": "Required: A list of dates for which child events should be created. In the format: [{ \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }, { ... }, ...]"
+            }, {
+                "name": "updateChildren",
+                "type": "JSON",
+                "info": "Optional: A map of event IDs to modified date objects for updating child events."
+            }, {
+                "name": "deleteChildren",
+                "type": "JSON",
+                "info": "Optional: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"publishEventSerie",
+        "description": "Publishes a repeating event series and all of its occurrences that are not already canceled or deleted. Once a date is cancelled it can still be uncancelled and can be viewed by the public. A deleted date cannot be undeleted and cannot by viewed by the public. In order for publish to be permitted, the event must have all necessary information, including a name and description, an organizer, at least one ticket, and valid payment options.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"unpublishEventSerie",
+        "description": "Unpublishes a repeating event series and all of its occurrences that are not already completed, canceled, or deleted. In order for a free series to be unpublished, it must not have any pending or completed orders for any dates, even past dates. In order for a paid series to be unpublished, it must not have any pending or completed orders for any dates, except that completed orders for past dates that have been completed and paid out do not prevent an unpublish. Returns a boolean indicating success or failure of the unpublish.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"cancelEventSerie",
+        "description": "Cancels a repeating event series and all of its occurrences that are not already canceled or deleted. In order for cancel to be permitted, there must be no pending or completed orders for any dates in the series. Returns a boolean indicating success or failure of the cancel.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteEventSerie",
+        "description": "Deletes a repeating event series and all of its occurrences if the delete is permitted. In order for a delete to be permitted, there must be no pending or completed orders for any dates in the series. Returns a boolean indicating success or failure of the delete.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getSignleEventFromSerieEvents",
+        "description": "Returns all of the events that belong to this repeating event series.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }, {
+                "name": "timeFilter",
+                "type": "String",
+                "info": "Optional: Limits results to either past or current & future events. (Valid choices are: all, past, or current_future)."
+            }, {
+                "name": "trackingCode",
+                "type": "String",
+                "info": "Optional: Append the given tracking_code to the event URLs returned."
+            }, {
+                "name": "orderBy",
+                "type": "String",
+                "info": "Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"changeSingleEventInSerieEvents",
+        "description": "Creates more event dates or updates or deletes existing event dates in a repeating event series. In order for a series date to be deleted or updated, there must be no pending or completed orders for that date.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
+            }, {
+                "name": "createChildren",
+                "type": "JSON",
+                "info": "Optional: A list of dates for which child events should be created. In the format: [{ \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }, { ... }, ...]"
+            }, {
+                "name": "updateChildren",
+                "type": "JSON",
+                "info": "Optional: A map of event IDs to modified date objects for updating child events. In the format: {\"1234\": { \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } },\"5678\": { ... }, ...}"
+            }, {
+                "name": "deleteChildren",
+                "type": "JSON",
+                "info": "Optional: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"searchEvent",
+        "description": "Allows you to retrieve a response of public event objects from across Eventbrite’s directory, regardless of which user owns the event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "q",
+                "type": "String",
+                "info": "Optional: Return events matching the given keywords. This parameter will accept any string as a keyword."
+            }, {
+                "name": "sortBy",
+                "type": "String",
+                "info": "Optional: Parameter you want to sort by - options are “date”, “distance” and “best”. Prefix with a hyphen to reverse the order, e.g. “-date”."
+            }, {
+                "name": "locationAddress",
+                "type": "String",
+                "info": "Optional: The address of the location you want to search for events around."
+            }, {
+                "name": "locationWithin",
+                "type": "String",
+                "info": "Optional: The distance you want to search around the given location. This should be an integer followed by “mi” or “km”."
+            }, {
+                "name": "locationLatitude",
+                "type": "String",
+                "info": "Optional: The latitude of of the location you want to search for events around."
+            }, {
+                "name": "locationLongitude",
+                "type": "String",
+                "info": "Optional: The longitude of the location you want to search for events around."
+            }, {
+                "name": "locationViewportNortheastLatitude",
+                "type": "String",
+                "info": "Optional: The latitude of the northeast corner of a viewport."
+            }, {
+                "name": "locationViewportNortheastLongitude",
+                "type": "String",
+                "info": "Optional: The longitude of the northeast corner of a viewport."
+            }, {
+                "name": "locationViewportSouthwestLatitude",
+                "type": "String",
+                "info": "Optional: The latitude of the southwest corner of a viewport."
+            }, {
+                "name": "locationViewportSouthwestLongitude",
+                "type": "String",
+                "info": "Optional: The longitude of the southwest corner of a viewport."
+            }, {
+                "name": "organizerId",
+                "type": "String",
+                "info": "Optional: Only return events organized by the given Organizer ID."
+            }, {
+                "name": "userId",
+                "type": "String",
+                "info": "Optional: Only return events owned by the given User ID."
+            }, {
+                "name": "trackingCode",
+                "type": "String",
+                "info": "Optional: Append the given tracking_code to the event URLs returned."
+            }, {
+                "name": "categories",
+                "type": "String",
+                "info": "Optional: Only return events under the given category IDs. This should be a comma delimited string of category IDs."
+            }, {
+                "name": "subcategories",
+                "type": "String",
+                "info": "Optional: Only return events under the given subcategory IDs. This should be a comma delimited string of subcategory IDs."
+            }, {
+                "name": "formats",
+                "type": "String",
+                "info": "Optional: Only return events with the given format IDs. This should be a comma delimited string of format IDs."
+            }, {
+                "name": "price",
+                "type": "String",
+                "info": "Optional: Only return events that are “free” or “paid”"
+            }, {
+                "name": "DateRangeStart",
+                "type": "String",
+                "info": "Optional: Only return events with start dates after the given date."
+            }, {
+                "name": "DateRangeEnd",
+                "type": "String",
+                "info": "Optional: Only return events with start dates before the given date."
+            }, {
+                "name": "startDateKeyword",
+                "type": "String",
+                "info": "Optional: Only return events with start dates within the given keyword date range. Keyword options are “this_week”, “next_week”, “this_weekend”, “next_month”, “this_month”, “tomorrow”, “today”"
+            }, {
+                "name": "ModifiedRangeStart",
+                "type": "String",
+                "info": "Optional: Only return events with modified dates after the given UTC date."
+            }, {
+                "name": "ModifiedRangeEnd",
+                "type": "String",
+                "info": "Optional: Only return events with modified dates before the given UTC date."
+            }, {
+                "name": "ModifiedKeyword",
+                "type": "String",
+                "info": "Optional: Only return events with modified dates within the given keyword date range. Keyword options are “this_week”, “next_week”, “this_weekend”, “next_month”, “this_month”, “tomorrow”, “today”"
+            }, {
+                "name": "searchType",
+                "type": "String",
+                "info": "Optional: Use the preconfigured settings for this type of search - Current option is “promoted”"
+            }, {
+                "name": "includeAllSeriesInstances",
+                "type": "String",
+                "info": "Optional: Boolean for whether or not you want to see all instances of repeating events in search results."
+            }, {
+                "name": "includeUnavailableEvents",
+                "type": "String",
+                "info": "Optional: Boolean for whether or not you want to see events without tickets on sale."
+            }, {
+                "name": "incorporateUserAffinities",
+                "type": "String",
+                "info": "Optional: Incorporate additional information from the user’s historic preferences."
+            }, {
+                "name": "highAffinityCategories",
+                "type": "String",
+                "info": "Optional: Make search results prefer events in these categories. This should be a comma delimited string of category IDs."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createEvent",
+        "description": "Makes a new event, and returns an event for the specified event. Does not support the creation of repeating event series.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventName",
+                "type": "String",
+                "info": "Required: The name of the event. Value cannot be empty nor whitespace."
+            }, {
+                "name": "eventDescription",
+                "type": "String",
+                "info": "Optional: The description on the event page."
+            }, {
+                "name": "eventOrganizerId",
+                "type": "String",
+                "info": "Optional: The ID of the organizer of this event."
+            }, {
+                "name": "eventStartUtc",
+                "type": "String",
+                "info": "Required: The start time of the event."
+            }, {
+                "name": "eventStartTimezone",
+                "type": "String",
+                "info": "Required: Start time timezone (Olson format)."
+            }, {
+                "name": "eventEndUtc",
+                "type": "String",
+                "info": "Required: The end time of the event."
+            }, {
+                "name": "eventEndTimezone",
+                "type": "String",
+                "info": "Required: End time timezone (Olson format)."
+            }, {
+                "name": "eventHideStartDate",
+                "type": "String",
+                "info": "Optional: Whether the start date should be hidden."
+            }, {
+                "name": "eventHideEndDate",
+                "type": "String",
+                "info": "Optional: Whether the end date should be hidden."
+            }, {
+                "name": "eventCurrency",
+                "type": "String",
+                "info": "Required: Event currency (3 letter code)."
+            }, {
+                "name": "eventVenueId",
+                "type": "String",
+                "info": "Optional: The ID of a previously-created venue to associate with this event. You can omit this field or set it to null if you set online_event."
+            }, {
+                "name": "eventOnlineEvent",
+                "type": "String",
+                "info": "Optional: Is the event online-only (no venue)."
+            }, {
+                "name": "eventListed",
+                "type": "String",
+                "info": "Optional: If the event is publicly listed and searchable. Defaults to True."
+            }, {
+                "name": "eventLogoId",
+                "type": "String",
+                "info": "Optional: The logo for the event."
+            }, {
+                "name": "eventCategoryId",
+                "type": "String",
+                "info": "Optional: The category (vertical) of the event."
+            }, {
+                "name": "eventSubcategoryId",
+                "type": "String",
+                "info": "Optional: The subcategory of the event (US only)."
+            }, {
+                "name": "eventFormatId",
+                "type": "String",
+                "info": "Optional: The format (general type) of the event."
+            }, {
+                "name": "eventShareable",
+                "type": "String",
+                "info": "Optional: If users can share the event on social media."
+            }, {
+                "name": "eventInviteOnly",
+                "type": "String",
+                "info": "Optional: Only invited users can see the event page."
+            }, {
+                "name": "eventPassword",
+                "type": "String",
+                "info": "Optional: Password needed to see the event in unlisted mode."
+            }, {
+                "name": "eventCapacity",
+                "type": "String",
+                "info": "Optional: Set specific capacity (if omitted, sums ticket capacities)."
+            }, {
+                "name": "eventShowRemaining",
+                "type": "String",
+                "info": "Optional: If the remaining number of tickets is publicly visible on the event page."
+            }, {
+                "name": "eventSource",
+                "type": "String",
+                "info": "Optional: Source of the event (defaults to API)."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventById",
+        "description": "Returns an event for the specified event. Many of Eventbrite’s API use cases revolve around pulling details of a specific event within an Eventbrite account. Does not support fetching a repeating event series parent.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateEvent",
+        "description": "Updates an event. Returns an event for the specified event. Does not support updating a repeating event series parent",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "eventName",
+                "type": "String",
+                "info": "Required: The name of the event. Value cannot be empty nor whitespace."
+            }, {
+                "name": "eventDescription",
+                "type": "String",
+                "info": "Optional: The description on the event page."
+            }, {
+                "name": "eventOrganizerId",
+                "type": "String",
+                "info": "Optional: The ID of the organizer of this event."
+            }, {
+                "name": "eventStartUtc",
+                "type": "String",
+                "info": "Required: The start time of the event."
+            }, {
+                "name": "eventStartTimezone",
+                "type": "String",
+                "info": "Required: Start time timezone (Olson format)."
+            }, {
+                "name": "eventEndUtc",
+                "type": "String",
+                "info": "Required: The end time of the event."
+            }, {
+                "name": "eventEndTimezone",
+                "type": "String",
+                "info": "Required: End time timezone (Olson format)."
+            }, {
+                "name": "eventHideStartDate",
+                "type": "String",
+                "info": "Optional: Whether the start date should be hidden."
+            }, {
+                "name": "eventHideEndDate",
+                "type": "String",
+                "info": "Optional: Whether the end date should be hidden."
+            }, {
+                "name": "eventCurrency",
+                "type": "String",
+                "info": "Required: Event currency (3 letter code)."
+            }, {
+                "name": "eventVenueId",
+                "type": "String",
+                "info": "Optional: The ID of a previously-created venue to associate with this event. You can omit this field or set it to null if you set online_event."
+            }, {
+                "name": "eventOnlineEvent",
+                "type": "String",
+                "info": "Optional: Is the event online-only (no venue)."
+            }, {
+                "name": "eventListed",
+                "type": "String",
+                "info": "Optional: If the event is publicly listed and searchable. Defaults to True."
+            }, {
+                "name": "eventLogoId",
+                "type": "String",
+                "info": "Optional: The logo for the event."
+            }, {
+                "name": "eventCategoryId",
+                "type": "String",
+                "info": "Optional: The category (vertical) of the event."
+            }, {
+                "name": "eventSubcategoryId",
+                "type": "String",
+                "info": "Optional: The subcategory of the event (US only)."
+            }, {
+                "name": "eventFormatId",
+                "type": "String",
+                "info": "Optional: The format (general type) of the event."
+            }, {
+                "name": "eventShareable",
+                "type": "String",
+                "info": "Optional: If users can share the event on social media."
+            }, {
+                "name": "eventInviteOnly",
+                "type": "String",
+                "info": "Optional: Only invited users can see the event page."
+            }, {
+                "name": "eventPassword",
+                "type": "String",
+                "info": "Optional: Password needed to see the event in unlisted mode."
+            }, {
+                "name": "eventCapacity",
+                "type": "String",
+                "info": "Optional: Set specific capacity (if omitted, sums ticket capacities)."
+            }, {
+                "name": "eventShowRemaining",
+                "type": "String",
+                "info": "Optional: If the remaining number of tickets is publicly visible on the event page."
+            }, {
+                "name": "eventSource",
+                "type": "String",
+                "info": "Optional: Source of the event (defaults to API)."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"publishEvent",
+        "description": "Publishes an event if it has not already been deleted. In order for publish to be permitted, the event must have all necessary information, including a name and description, an organizer, at least one ticket, and valid payment options. This API endpoint will return argument errors for event fields that fail to validate the publish requirements. Returns a boolean indicating success or failure of the publish.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"unpublishEvent",
+        "description": "Unpublishes an event. In order for a free event to be unpublished, it must not have any pending or completed orders, even if the event is in the past. In order for a paid event to be unpublished, it must not have any pending or completed orders, unless the event has been completed and paid out. Returns a boolean indicating success or failure of the unpublish.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"cancelEvent",
+        "description": "Cancels an event if it has not already been deleted. In order for cancel to be permitted, there must be no pending or completed orders. Returns a boolean indicating success or failure of the cancel.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteEvent",
+        "description": "Deletes an event if the delete is permitted. In order for a delete to be permitted, there must be no pending or completed orders. Returns a boolean indicating success or failure of the delete.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventDisplaySettings",
+        "description": "Retrieves the display settings for an event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateEventDisplaySettings",
+        "description": "Updates the display settings for an event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "showStartDate",
+                "type": "String",
+                "info": "Optional: Whether to display the start date on the event listing."
+            }, {
+                "name": "showEndDate",
+                "type": "String",
+                "info": "Optional: Whether to display the end date on the event listing."
+            }, {
+                "name": "showStartEndTime",
+                "type": "String",
+                "info": "Optional: Whether to display event start and end time on the event listing."
+            }, {
+                "name": "showTimezone",
+                "type": "String",
+                "info": "Optional: Whether to display the event timezone on the event listing."
+            }, {
+                "name": "showMap",
+                "type": "String",
+                "info": "Optional: Whether to display a map to the venue on the event listing."
+            }, {
+                "name": "showRemaining",
+                "type": "String",
+                "info": "Optional: Whether to display the number of remaining tickets."
+            }, {
+                "name": "showOrganizerFacebook",
+                "type": "String",
+                "info": "Optional: Whether to display a link to the organizer’s Facebook profile."
+            }, {
+                "name": "showOrganizerTwitter",
+                "type": "String",
+                "info": "Optional: Whether to display a link to the organizer’s Twitter profile."
+            }, {
+                "name": "showFacebookFriendsGoing",
+                "type": "String",
+                "info": "Optional: Whether to display which of the user’s Facebook friends are going."
+            }, {
+                "name": "terminology",
+                "type": "String",
+                "info": "Optional: Which terminology should be used to refer to the event (Valid choices are: tickets_vertical, or endurance_vertical)."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventTicketClasses",
+        "description": "Returns a response with a key of ticket_classes, containing a list of ticket_class.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "pos",
+                "type": "String",
+                "info": "Optional: Only return ticket classes valid for the given point of sale (Valid choices are: online, or at_the_door)."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createEventTicketClass",
+        "description": "Creates a new ticket class, returning the result as a ticket_class under the key ticket_class.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "name",
+                "type": "String",
+                "info": "Optional: Name of this ticket type."
+            }, {
+                "name": "description",
+                "type": "String",
+                "info": "Optional: Description of the ticket."
+            }, {
+                "name": "quantityTotal",
+                "type": "String",
+                "info": "Optional: Total available number of this ticket."
+            }, {
+                "name": "cost",
+                "type": "String",
+                "info": "Optional: Cost of the ticket (currently currency must match event currency) e.g. $45 would be ‘USD,4500’."
+            }, {
+                "name": "donation",
+                "type": "String",
+                "info": "Optional: Is this a donation? (user-supplied cost)"
+            }, {
+                "name": "free",
+                "type": "String",
+                "info": "Optional: Is this a free ticket?"
+            }, {
+                "name": "includeFee",
+                "type": "String",
+                "info": "Optional: Absorb the fee into the displayed cost."
+            }, {
+                "name": "splitFee",
+                "type": "String",
+                "info": "Optional: Absorb the payment fee, but show the eventbrite fee."
+            }, {
+                "name": "hideDescription",
+                "type": "String",
+                "info": "Optional: Hide the ticket description on the event page."
+            }, {
+                "name": "salesChannels",
+                "type": "String",
+                "info": "Optional: A list of all supported sales channels ([“online”], [“online”, “atd”], [“atd”])."
+            }, {
+                "name": "salesStart",
+                "type": "String",
+                "info": "Optional: When the ticket is available for sale (leave empty for ‘when event published’)."
+            }, {
+                "name": "salesEnd",
+                "type": "String",
+                "info": "Optional: When the ticket stops being on sale (leave empty for ‘one hour before event start’)."
+            }, {
+                "name": "salesStartAfter",
+                "type": "String",
+                "info": "Optional: The ID of another ticket class - when it sells out, this class will go on sale."
+            }, {
+                "name": "minimumQuantity",
+                "type": "String",
+                "info": "Optional: Minimum number per order."
+            }, {
+                "name": "autoHide",
+                "type": "String",
+                "info": "Optional: Hide this ticket when it is not on sale."
+            }, {
+                "name": "autoHideBefore",
+                "type": "String",
+                "info": "Optional: Override reveal date for auto-hide."
+            }, {
+                "name": "autoHideAfter",
+                "type": "String",
+                "info": "Optional: Override re-hide date for auto-hide."
+            }, {
+                "name": "hidden",
+                "type": "String",
+                "info": "Optional: Hide this ticket."
+            }, {
+                "name": "orderConfirmationMessage",
+                "type": "String",
+                "info": "Optional: Order message per ticket type."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventTicketClass",
+        "description": "Gets and returns a single ticket_class by ID, as the key ticket_class.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "ticketClassId",
+                "type": "String",
+                "info": "Required: The ID of the ticket class."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateEventTicketClass",
+        "description": "Updates an existing ticket class, returning the updated result as a ticket_class under the key ticket_class.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "ticketClassId",
+                "type": "String",
+                "info": "Required: The ID of the ticket class."
+            }, {
+                "name": "name",
+                "type": "String",
+                "info": "Optional: Name of this ticket type."
+            }, {
+                "name": "description",
+                "type": "String",
+                "info": "Optional: Description of the ticket."
+            }, {
+                "name": "quantityTotal",
+                "type": "String",
+                "info": "Optional: Total available number of this ticket."
+            }, {
+                "name": "cost",
+                "type": "String",
+                "info": "Optional: Cost of the ticket (currently currency must match event currency) e.g. $45 would be ‘USD,4500’."
+            }, {
+                "name": "donation",
+                "type": "String",
+                "info": "Optional: Is this a donation? (user-supplied cost)"
+            }, {
+                "name": "free",
+                "type": "String",
+                "info": "Optional: Is this a free ticket?"
+            }, {
+                "name": "includeFee",
+                "type": "String",
+                "info": "Optional: Absorb the fee into the displayed cost."
+            }, {
+                "name": "splitFee",
+                "type": "String",
+                "info": "Optional: Absorb the payment fee, but show the eventbrite fee."
+            }, {
+                "name": "hideDescription",
+                "type": "String",
+                "info": "Optional: Hide the ticket description on the event page."
+            }, {
+                "name": "salesChannels",
+                "type": "String",
+                "info": "Optional: A list of all supported sales channels ([“online”], [“online”, “atd”], [“atd”])."
+            }, {
+                "name": "salesStart",
+                "type": "String",
+                "info": "Optional: When the ticket is available for sale (leave empty for ‘when event published’)."
+            }, {
+                "name": "salesEnd",
+                "type": "String",
+                "info": "Optional: When the ticket stops being on sale (leave empty for ‘one hour before event start’)."
+            }, {
+                "name": "salesStartAfter",
+                "type": "String",
+                "info": "Optional: The ID of another ticket class - when it sells out, this class will go on sale."
+            }, {
+                "name": "minimumQuantity",
+                "type": "String",
+                "info": "Optional: Minimum number per order."
+            }, {
+                "name": "autoHide",
+                "type": "String",
+                "info": "Optional: Hide this ticket when it is not on sale."
+            }, {
+                "name": "autoHideBefore",
+                "type": "String",
+                "info": "Optional: Override reveal date for auto-hide."
+            }, {
+                "name": "autoHideAfter",
+                "type": "String",
+                "info": "Optional: Override re-hide date for auto-hide."
+            }, {
+                "name": "hidden",
+                "type": "String",
+                "info": "Optional: Hide this ticket."
+            }, {
+                "name": "orderConfirmationMessage",
+                "type": "String",
+                "info": "Optional: Order message per ticket type."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteEventTicketClass",
+        "description": "Deletes the ticket class. Returns {\"deleted\": true}.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "ticketClassId",
+                "type": "String",
+                "info": "Required: The ID of the ticket class."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"addEventQuestion",
+        "description": "Eventbrite allows event organizers to add custom questions that attendees fill out upon registration. This endpoint can be helpful for determining what custom information is collected and available per event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "asOwner",
+                "type": "String",
+                "info": "Optional: Return private events and more details. True or false."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventQuestion",
+        "description": "This endpoint will return question for a specific question id.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "questionId",
+                "type": "String",
+                "info": "Required: The ID of the question."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventAttendees",
+        "description": "Returns a response with a key of attendees, containing a list of attendee.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Limits results to either confirmed attendees or cancelled/refunded/etc. attendees (Valid choices are: attending, not_attending, or unpaid)."
+            }, {
+                "name": "changedSince",
+                "type": "String",
+                "info": "Optional: Only return attendees changed on or after the time given."
+            }, {
+                "name": "lastItemSeen",
+                "type": "String",
+                "info": "Optional: Only return attendees changed on or after the time given and with an id bigger than last item seen."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEvent",
+        "description": "Returns a single attendee by ID, as the key attendee.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "attendeeId",
+                "type": "String",
+                "info": "Required: The ID of the attendee."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventOrders",
+        "description": "Returns a response with a key of orders, containing a list of order against this event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "status",
+                "type": "String",
+                "info": "Optional: Filter to active (attending), inactive (not attending), or all (both) orders (Valid choices are: active, inactive, or all)."
+            }, {
+                "name": "changedSince",
+                "type": "String",
+                "info": "Optional: Only return orders changed on or after the time given."
+            }, {
+                "name": "lastItemSeen",
+                "type": "String",
+                "info": "Optional: Only return orders changed on or after the time given and with an id bigger than last item seen."
+            }, {
+                "name": "onlyEmails",
+                "type": "String",
+                "info": "Optional: Only include orders placed by one of these emails."
+            }, {
+                "name": "excludeEmails",
+                "type": "String",
+                "info": "Optional: Don’t include orders placed by any of these emails."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventDiscounts",
+        "description": "Returns a response with a key of discounts, containing a list of discounts available on this event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createEventDiscount",
+        "description": "Returns a response with a key of discounts, containing a list of discounts available on this event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "code",
+                "type": "String",
+                "info": "Required: Code used to activate discount."
+            }, {
+                "name": "amountOff",
+                "type": "String",
+                "info": "Optional: Fixed reduction amount."
+            }, {
+                "name": "percentOff",
+                "type": "String",
+                "info": "Optional: Percentage reduction."
+            }, {
+                "name": "ticketIds",
+                "type": "String",
+                "info": "Optional: IDs of tickets to limit discount to."
+            }, {
+                "name": "quantityAvailable",
+                "type": "String",
+                "info": "Optional: Number of discount uses."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Allow use from this date."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Allow use until this date."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventDiscount",
+        "description": "Gets a discount by ID as the key discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "discountId",
+                "type": "String",
+                "info": "Required: The ID of the discount."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateEventDiscount",
+        "description": "Updates a discount; returns the result as a discount as the key discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "discountId",
+                "type": "String",
+                "info": "Required: The ID of the discount."
+            }, {
+                "name": "code",
+                "type": "String",
+                "info": "Required: Code used to activate discount."
+            }, {
+                "name": "amountOff",
+                "type": "String",
+                "info": "Optional: Fixed reduction amount."
+            }, {
+                "name": "percentOff",
+                "type": "String",
+                "info": "Optional: Percentage reduction."
+            }, {
+                "name": "ticketIds",
+                "type": "String",
+                "info": "Optional: IDs of tickets to limit discount to."
+            }, {
+                "name": "quantityAvailable",
+                "type": "String",
+                "info": "Optional: Number of discount uses."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Allow use from this date."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Allow use until this date."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventPublicDiscounts",
+        "description": "Updates a discount; returns the result as a discount as the key discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createEventPublicDiscount",
+        "description": "Creates a new public discount; returns the result as a discount as the key discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "code",
+                "type": "String",
+                "info": "Required: Code used to activate discount."
+            }, {
+                "name": "amountOff",
+                "type": "String",
+                "info": "Optional: Fixed reduction amount."
+            }, {
+                "name": "percentOff",
+                "type": "String",
+                "info": "Optional: Percentage reduction."
+            }, {
+                "name": "ticketIds",
+                "type": "String",
+                "info": "Optional: IDs of tickets to limit discount to."
+            }, {
+                "name": "quantityAvailable",
+                "type": "String",
+                "info": "Optional: Number of discount uses."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Allow use from this date."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Allow use until this date."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventPublicDiscount",
+        "description": "Gets a public discount by ID as the key discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "discountId",
+                "type": "String",
+                "info": "Required: The ID of the discount."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateEventPublicDiscount",
+        "description": "Updates a public discount; returns the result as a discount as the key discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "discountId",
+                "type": "String",
+                "info": "Required: The ID of the discount."
+            }, {
+                "name": "code",
+                "type": "String",
+                "info": "Required: Code used to activate discount."
+            }, {
+                "name": "amountOff",
+                "type": "String",
+                "info": "Optional: Fixed reduction amount."
+            }, {
+                "name": "percentOff",
+                "type": "String",
+                "info": "Optional: Percentage reduction."
+            }, {
+                "name": "ticketIds",
+                "type": "String",
+                "info": "Optional: IDs of tickets to limit discount to."
+            }, {
+                "name": "quantityAvailable",
+                "type": "String",
+                "info": "Optional: Number of discount uses."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Allow use from this date."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Allow use until this date."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteEventPublicDiscount",
+        "description": "Deletes a public discount.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "discountId",
+                "type": "String",
+                "info": "Required: The ID of the discount."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventAccessCodes",
+        "description": "Returns a response with a key of access_codes, containing a list of access_codes available on this event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"createEventAccessCode",
+        "description": "Creates a new access code; returns the result as a access_code as the key access_code.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "code",
+                "type": "String",
+                "info": "Required: Code used to initiate access."
+            }, {
+                "name": "ticketIds",
+                "type": "String",
+                "info": "Required: Comma-separated IDs of tickets to allow access to."
+            }, {
+                "name": "quantityAvailable",
+                "type": "String",
+                "info": "Optional: Number of uses."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Allow use from this date."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Allow use until this date."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventAccessCode",
+        "description": "Gets a access_code by ID as the key access_code.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "accessCodeId",
+                "type": "String",
+                "info": "Required: The Id of the access code."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"updateEventAccessCode",
+        "description": "Updates an access code; returns the result as a access_code as the key access_code.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "accessCodeId",
+                "type": "String",
+                "info": "Required: The Id of the access code."
+            }, {
+                "name": "code",
+                "type": "String",
+                "info": "Required: Code used to initiate access."
+            }, {
+                "name": "ticketIds",
+                "type": "String",
+                "info": "Required: Comma-separated IDs of tickets to allow access to."
+            }, {
+                "name": "quantityAvailable",
+                "type": "String",
+                "info": "Optional: Number of uses."
+            }, {
+                "name": "startDate",
+                "type": "String",
+                "info": "Optional: Allow use from this date."
+            }, {
+                "name": "endDate",
+                "type": "String",
+                "info": "Optional: Allow use until this date."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventTransfers",
+        "description": "Returns a list of transfers for the event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "changedSince",
+                "type": "String",
+                "info": "Optional: Only return transfers changed on or after the time given."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventTeams",
+        "description": "Returns a list of teams for the event.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getEventTeam",
+        "description": "Returns information for a single teams.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "teamId",
+                "type": "String",
+                "info": "Required: The ID of the team."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"getTeamAttendees",
+        "description": "Returns attendees for a single teams.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
+            }, {
+                "name": "eventId",
+                "type": "String",
+                "info": "Required: The ID of the event."
+            }, {
+                "name": "teamId",
+                "type": "String",
+                "info": "Required: The ID of the team."
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }
+    ]
+}
