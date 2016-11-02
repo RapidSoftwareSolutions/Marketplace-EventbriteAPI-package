@@ -836,12 +836,12 @@ class EventbriteAPITest extends BaseTestCase {
                     "args": {
                         "token": "'.$this->token.'",
                         "seriesParentName": "Test",
-                        "seriesParentStartUtc": "2026-10-26T9:00:00Z",
+                        "seriesParentStartUtc": "2017-10-26T9:00:00Z",
                         "seriesParentStartTimezone": "America/Los_Angeles",
-                        "seriesParentEndUtc": "2026-10-27T12:00:00Z",
+                        "seriesParentEndUtc": "2017-10-27T12:00:00Z",
                         "seriesParentEndTimezone": "America/Los_Angeles",
                         "seriesParentCurrency": "USD",
-                        "createChildren": "[{ \"start\": { \"utc\": \"2016-10-26T09:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2016-10-27T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }]"
+                        "createChildren": "[{ \"start\": { \"utc\": \"2018-10-26T09:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2018-10-27T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }]"
                     }
                 }';
         $post_data = json_decode($var, true);
@@ -887,19 +887,19 @@ class EventbriteAPITest extends BaseTestCase {
                         "token": "'.$this->token.'",
                         "serieId": "'.$eventSerieId.'",
                         "seriesParentName": "Test",
-                        "seriesParentStartUtc": "2026-10-26T9:00:00Z",
+                        "seriesParentStartUtc": "2017-10-26T9:00:00Z",
                         "seriesParentStartTimezone": "America/Los_Angeles",
-                        "seriesParentEndUtc": "2026-10-27T12:00:00Z",
+                        "seriesParentEndUtc": "2017-10-27T12:00:00Z",
                         "seriesParentEndTimezone": "America/Los_Angeles",
                         "seriesParentCurrency": "EUR",
-                        "createChildren": "[{ \"start\": { \"utc\": \"2016-10-26T09:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2016-10-27T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }]"
+                        "createChildren": "[{ \"start\": { \"utc\": \"2017-11-26T09:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2017-11-27T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }]"
                     }
                 }';
 
         $post_data = json_decode($var, true);
 
         $response = $this->runApp('POST', '/api/EventbriteAPI/changeEventSerie', $post_data);
-        
+       
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
         $this->assertEquals('success', json_decode($response->getBody())->callback);
@@ -988,18 +988,44 @@ class EventbriteAPITest extends BaseTestCase {
     /**
      * @depends testcreateEventSeries
      */
-    public function testchangeSingleEventInSerieEvents($eventSerieId) {
+    public function testaddSingleEventInSerieEvents($eventSerieId) {
         
         $var = '{
                     "args": {
                         "token": "'.$this->token.'",
                         "serieId": "28857678092",
-                        "createChildren": "[{ \"start\": { \"utc\": \"2017-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2017-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }]"
+                        "addChildren": "[{ \"start\": { \"utc\": \"2017-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2017-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }]"
                     }
                 }';
         $post_data = json_decode($var, true);
 
-        $response = $this->runApp('POST', '/api/EventbriteAPI/changeSingleEventInSerieEvents', $post_data);
+        $response = $this->runApp('POST', '/api/EventbriteAPI/addSingleEventInSerieEvents', $post_data);
+        
+        $childrenId = json_decode($response->getBody())->contextWrites->to->children_created[0];
+        
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertNotEmpty($response->getBody());
+        $this->assertEquals('success', json_decode($response->getBody())->callback);
+        
+        return $childrenId;
+    }
+    
+    /**
+     * @depends testcreateEventSeries
+     * @depends testaddSingleEventInSerieEvents
+     */
+    public function testdeleteSingleEventInSerieEvents($eventSerieId, $childrenId) {
+        
+        $var = '{
+                    "args": {
+                        "token": "'.$this->token.'",
+                        "serieId": "28857678092",
+                        "deleteChildren": "'.$childrenId.'"
+                    }
+                }';
+        $post_data = json_decode($var, true);
+
+        $response = $this->runApp('POST', '/api/EventbriteAPI/deleteSingleEventInSerieEvents', $post_data);
         
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());

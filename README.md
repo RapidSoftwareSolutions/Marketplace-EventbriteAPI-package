@@ -18,9 +18,6 @@ The Eventbrite API is the best way to integrate and extend Eventbrite for your e
 * [getSingleFormat](#getSingleFormat)
 * [getMedia](#getMedia)
 * [uploadMedia](#uploadMedia)
-* [getOrder](#getOrder)
-* [getSalesReport](#getSalesReport)
-* [getAttendeesReport](#getAttendeesReport)
 * [getTimezones](#getTimezones)
 * [getRegions](#getRegions)
 * [getCountries](#getCountries)
@@ -62,7 +59,8 @@ The Eventbrite API is the best way to integrate and extend Eventbrite for your e
 * [cancelEventSerie](#cancelEventSerie)
 * [deleteEventSerie](#deleteEventSerie)
 * [getSignleEventFromSerieEvents](#getSignleEventFromSerieEvents)
-* [changeSingleEventInSerieEvents](#changeSingleEventInSerieEvents)
+* [addSingleEventInSerieEvents](#addSingleEventInSerieEvents)
+* [deleteSingleEventInSerieEvents](#deleteSingleEventInSerieEvents)
 * [searchEvent](#searchEvent)
 * [createEvent](#createEvent)
 * [getEventById](#getEventById)
@@ -79,9 +77,7 @@ The Eventbrite API is the best way to integrate and extend Eventbrite for your e
 * [updateEventTicketClass](#updateEventTicketClass)
 * [deleteEventTicketClass](#deleteEventTicketClass)
 * [addEventQuestion](#addEventQuestion)
-* [getEventQuestion](#getEventQuestion)
 * [getEventAttendees](#getEventAttendees)
-* [getEvent](#getEvent)
 * [getEventOrders](#getEventOrders)
 * [getEventDiscounts](#getEventDiscounts)
 * [createEventDiscount](#createEventDiscount)
@@ -174,51 +170,6 @@ Upload media.
 | cropTopLeftY| String     | Optional: Y coordinate for top-left corner of crop mask.
 | cropWidth   | String     | Optional: Crop mask width.
 | cropHeight  | String     | Optional: Crop mask height.
-
-<a name="getOrder"/>
-## EventbriteAPI.getOrder
-Gets an order by ID as the key order.
-
-| Field  | Type       | Description
-|--------|------------|----------
-| token  | credentials| Required: The OAuth token obtained from Eventbrite.
-| orderId| String     | Required: The ID of the order.
-
-<a name="getSalesReport"/>
-## EventbriteAPI.getSalesReport
-Returns a response of the aggregate sales data.
-
-| Field      | Type       | Description
-|------------|------------|----------
-| token      | credentials| Required: The OAuth token obtained from Eventbrite.
-| eventIds   | String     | Optional: List of public event IDs to report on.
-| eventStatus| String     | Optional: Event status to filter down results by (Valid choices are: all, live, or ended).
-| startDate  | String     | Optional: Optional start date to query.
-| endDate    | String     | Optional: Optional end date to query.
-| period     | String     | Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet.
-| filterBy   | String     | Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}
-| groupBy    | String     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).
-| dateFacet  | String     | Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).
-| timezone   | String     | Optional: Optional timezone. If unspecified picks the TZ of the first event.
-| randomSeed | String     | Optional: Random seed for dataset (default = 0). Aids in determinism.
-
-<a name="getAttendeesReport"/>
-## EventbriteAPI.getAttendeesReport
-Returns a response of the aggregate attendees data.
-
-| Field      | Type       | Description
-|------------|------------|----------
-| token      | credentials| Required: The OAuth token obtained from Eventbrite.
-| eventIds   | String     | Optional: List of public event IDs to report on.
-| eventStatus| String     | Optional: Event status to filter down results by (Valid choices are: all, live, or ended).
-| startDate  | String     | Optional: Optional start date to query.
-| endDate    | String     | Optional: Optional end date to query.
-| period     | String     | Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet.
-| filterBy   | String     | Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}
-| groupBy    | String     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).
-| dateFacet  | String     | Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).
-| timezone   | String     | Optional: Optional timezone. If unspecified picks the TZ of the first event.
-| randomSeed | String     | Optional: Random seed for dataset (default = 0). Aids in determinism.
 
 <a name="getTimezones"/>
 ## EventbriteAPI.getTimezones
@@ -718,17 +669,25 @@ Returns all of the events that belong to this repeating event series.
 | trackingCode| String     | Optional: Append the given tracking_code to the event URLs returned.
 | orderBy     | String     | Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)
 
-<a name="changeSingleEventInSerieEvents"/>
-## EventbriteAPI.changeSingleEventInSerieEvents
-Creates more event dates or updates or deletes existing event dates in a repeating event series. In order for a series date to be deleted or updated, there must be no pending or completed orders for that date.
+<a name="addSingleEventInSerieEvents"/>
+## EventbriteAPI.addSingleEventInSerieEvents
+Creates more event dates in a repeating event series.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| token      | credentials| Required: The OAuth token obtained from Eventbrite.
+| serieId    | String     | Required: The Id of the serie.
+| addChildren| JSON       | Required: A list of dates for which child events should be created. In the format: [{ "start": { "utc": "2015-06-15T12:00:00Z", "timezone": "America/Los_Angeles" }, "end": { "utc": "2015-06-15T13:00:00Z", "timezone": "America/Los_Angeles" } }, { ... }, ...]
+
+<a name="deleteSingleEventInSerieEvents"/>
+## EventbriteAPI.deleteSingleEventInSerieEvents
+Deletes existing event dates in a repeating event series. In order for a series date to be deleted, there must be no pending or completed orders for that date.
 
 | Field         | Type       | Description
 |---------------|------------|----------
 | token         | credentials| Required: The OAuth token obtained from Eventbrite.
 | serieId       | String     | Required: The Id of the serie.
-| createChildren| JSON       | Optional: A list of dates for which child events should be created. In the format: [{ "start": { "utc": "2015-06-15T12:00:00Z", "timezone": "America/Los_Angeles" }, "end": { "utc": "2015-06-15T13:00:00Z", "timezone": "America/Los_Angeles" } }, { ... }, ...]
-| updateChildren| JSON       | Optional: A map of event IDs to modified date objects for updating child events. In the format: {"1234": { "start": { "utc": "2015-06-15T12:00:00Z", "timezone": "America/Los_Angeles" }, "end": { "utc": "2015-06-15T13:00:00Z", "timezone": "America/Los_Angeles" } },"5678": { ... }, ...}
-| deleteChildren| JSON       | Optional: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012
+| deleteChildren| JSON       | Required: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012
 
 <a name="searchEvent"/>
 ## EventbriteAPI.searchEvent
@@ -999,16 +958,6 @@ Eventbrite allows event organizers to add custom questions that attendees fill o
 | eventId| String     | Required: The ID of the event.
 | asOwner| String     | Optional: Return private events and more details. True or false.
 
-<a name="getEventQuestion"/>
-## EventbriteAPI.getEventQuestion
-This endpoint will return question for a specific question id.
-
-| Field     | Type       | Description
-|-----------|------------|----------
-| token     | credentials| Required: The OAuth token obtained from Eventbrite.
-| eventId   | String     | Required: The ID of the event.
-| questionId| String     | Required: The ID of the question.
-
 <a name="getEventAttendees"/>
 ## EventbriteAPI.getEventAttendees
 Returns a response with a key of attendees, containing a list of attendee.
@@ -1020,16 +969,6 @@ Returns a response with a key of attendees, containing a list of attendee.
 | status      | String     | Optional: Limits results to either confirmed attendees or cancelled/refunded/etc. attendees (Valid choices are: attending, not_attending, or unpaid).
 | changedSince| String     | Optional: Only return attendees changed on or after the time given.
 | lastItemSeen| String     | Optional: Only return attendees changed on or after the time given and with an id bigger than last item seen.
-
-<a name="getEvent"/>
-## EventbriteAPI.getEvent
-Returns a single attendee by ID, as the key attendee.
-
-| Field     | Type       | Description
-|-----------|------------|----------
-| token     | credentials| Required: The OAuth token obtained from Eventbrite.
-| eventId   | String     | Required: The ID of the event.
-| attendeeId| String     | Required: The ID of the attendee.
 
 <a name="getEventOrders"/>
 ## EventbriteAPI.getEventOrders

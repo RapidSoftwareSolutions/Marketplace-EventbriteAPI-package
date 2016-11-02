@@ -211,150 +211,6 @@
             }
         ]
     }, {
-        "name":"getOrder",
-        "description": "Gets an order by ID as the key order.",
-        "args":[
-            {
-                "name": "token",
-                "type": "credentials",
-                "info": "Required: The OAuth token obtained from Eventbrite."
-            }, {
-                "name": "orderId",
-                "type": "String",
-                "info": "Required: The ID of the order."
-            }
-        ],
-        "callbacks":[
-            {
-                "name":"error",
-                "info": "Error"
-            },
-            {
-                "name":"success",
-                "info": "Success => channels: Array <string>"
-            }
-        ]
-    }, {
-        "name":"getSalesReport",
-        "description": "Returns a response of the aggregate sales data.",
-        "args":[
-            {
-                "name": "token",
-                "type": "credentials",
-                "info": "Required: The OAuth token obtained from Eventbrite."
-            }, {
-                "name": "eventIds",
-                "type": "String",
-                "info": "Optional: List of public event IDs to report on."
-            }, {
-                "name": "eventStatus",
-                "type": "String",
-                "info": "Optional: Event status to filter down results by (Valid choices are: all, live, or ended)."
-            }, {
-                "name": "startDate",
-                "type": "String",
-                "info": "Optional: Optional start date to query."
-            }, {
-                "name": "endDate",
-                "type": "String",
-                "info": "Optional: Optional end date to query."
-            }, {
-                "name": "period",
-                "type": "String",
-                "info": "Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet."
-            }, {
-                "name": "filterBy",
-                "type": "String",
-                "info": "Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}"
-            }, {
-                "name": "groupBy",
-                "type": "String",
-                "info": "Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source)."
-            }, {
-                "name": "dateFacet",
-                "type": "String",
-                "info": "Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none)."
-            }, {
-                "name": "timezone",
-                "type": "String",
-                "info": "Optional: Optional timezone. If unspecified picks the TZ of the first event."
-            }, {
-                "name": "randomSeed",
-                "type": "String",
-                "info": "Optional: Random seed for dataset (default = 0). Aids in determinism."
-            }
-        ],
-        "callbacks":[
-            {
-                "name":"error",
-                "info": "Error"
-            },
-            {
-                "name":"success",
-                "info": "Success => channels: Array <string>"
-            }
-        ]
-    }, {
-        "name":"getAttendeesReport",
-        "description": "Returns a response of the aggregate attendees data.",
-        "args":[
-            {
-                "name": "token",
-                "type": "credentials",
-                "info": "Required: The OAuth token obtained from Eventbrite."
-            }, {
-                "name": "eventIds",
-                "type": "String",
-                "info": "Optional: List of public event IDs to report on."
-            }, {
-                "name": "eventStatus",
-                "type": "String",
-                "info": "Optional: Event status to filter down results by (Valid choices are: all, live, or ended)."
-            }, {
-                "name": "startDate",
-                "type": "String",
-                "info": "Optional: Optional start date to query."
-            }, {
-                "name": "endDate",
-                "type": "String",
-                "info": "Optional: Optional end date to query."
-            }, {
-                "name": "period",
-                "type": "String",
-                "info": "Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet."
-            }, {
-                "name": "filterBy",
-                "type": "String",
-                "info": "Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}"
-            }, {
-                "name": "groupBy",
-                "type": "String",
-                "info": "Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source)."
-            }, {
-                "name": "dateFacet",
-                "type": "String",
-                "info": "Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none)."
-            }, {
-                "name": "timezone",
-                "type": "String",
-                "info": "Optional: Optional timezone. If unspecified picks the TZ of the first event."
-            }, {
-                "name": "randomSeed",
-                "type": "String",
-                "info": "Optional: Random seed for dataset (default = 0). Aids in determinism."
-            }
-        ],
-        "callbacks":[
-            {
-                "name":"error",
-                "info": "Error"
-            },
-            {
-                "name":"success",
-                "info": "Success => channels: Array <string>"
-            }
-        ]
-    }, {
         "name":"getTimezones",
         "description": "Returns a response with a key of timezones, containing a list of timezones.",
         "args":[
@@ -1855,8 +1711,8 @@
             }
         ]
     }, {
-        "name":"changeSingleEventInSerieEvents",
-        "description": "Creates more event dates or updates or deletes existing event dates in a repeating event series. In order for a series date to be deleted or updated, there must be no pending or completed orders for that date.",
+        "name":"addSingleEventInSerieEvents",
+        "description": "Creates more event dates in a repeating event series.",
         "args":[
             {
                 "name": "token",
@@ -1867,17 +1723,37 @@
                 "type": "String",
                 "info": "Required: The Id of the serie."
             }, {
-                "name": "createChildren",
+                "name": "addChildren",
                 "type": "JSON",
-                "info": "Optional: A list of dates for which child events should be created. In the format: [{ \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }, { ... }, ...]"
+                "info": "Required: A list of dates for which child events should be created. In the format: [{ \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } }, { ... }, ...]"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    }, {
+        "name":"deleteSingleEventInSerieEvents",
+        "description": "Deletes existing event dates in a repeating event series. In order for a series date to be deleted, there must be no pending or completed orders for that date.",
+        "args":[
+            {
+                "name": "token",
+                "type": "credentials",
+                "info": "Required: The OAuth token obtained from Eventbrite."
             }, {
-                "name": "updateChildren",
-                "type": "JSON",
-                "info": "Optional: A map of event IDs to modified date objects for updating child events. In the format: {\"1234\": { \"start\": { \"utc\": \"2015-06-15T12:00:00Z\", \"timezone\": \"America/Los_Angeles\" }, \"end\": { \"utc\": \"2015-06-15T13:00:00Z\", \"timezone\": \"America/Los_Angeles\" } },\"5678\": { ... }, ...}"
+                "name": "serieId",
+                "type": "String",
+                "info": "Required: The Id of the serie."
             }, {
                 "name": "deleteChildren",
                 "type": "JSON",
-                "info": "Optional: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012"
+                "info": "Required: A list of IDs for child events that should be deleted. In the format: 1234,5678,9012"
             }
         ],
         "callbacks":[
@@ -2775,34 +2651,6 @@
             }
         ]
     }, {
-        "name":"getEventQuestion",
-        "description": "This endpoint will return question for a specific question id.",
-        "args":[
-            {
-                "name": "token",
-                "type": "credentials",
-                "info": "Required: The OAuth token obtained from Eventbrite."
-            }, {
-                "name": "eventId",
-                "type": "String",
-                "info": "Required: The ID of the event."
-            }, {
-                "name": "questionId",
-                "type": "String",
-                "info": "Required: The ID of the question."
-            }
-        ],
-        "callbacks":[
-            {
-                "name":"error",
-                "info": "Error"
-            },
-            {
-                "name":"success",
-                "info": "Success => channels: Array <string>"
-            }
-        ]
-    }, {
         "name":"getEventAttendees",
         "description": "Returns a response with a key of attendees, containing a list of attendee.",
         "args":[
@@ -2826,34 +2674,6 @@
                 "name": "lastItemSeen",
                 "type": "String",
                 "info": "Optional: Only return attendees changed on or after the time given and with an id bigger than last item seen."
-            }
-        ],
-        "callbacks":[
-            {
-                "name":"error",
-                "info": "Error"
-            },
-            {
-                "name":"success",
-                "info": "Success => channels: Array <string>"
-            }
-        ]
-    }, {
-        "name":"getEvent",
-        "description": "Returns a single attendee by ID, as the key attendee.",
-        "args":[
-            {
-                "name": "token",
-                "type": "credentials",
-                "info": "Required: The OAuth token obtained from Eventbrite."
-            }, {
-                "name": "eventId",
-                "type": "String",
-                "info": "Required: The ID of the event."
-            }, {
-                "name": "attendeeId",
-                "type": "String",
-                "info": "Required: The ID of the attendee."
             }
         ],
         "callbacks":[

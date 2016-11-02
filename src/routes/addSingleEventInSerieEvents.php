@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/EventbriteAPI/changeSingleEventInSerieEvents', function ($request, $response, $args) {
+$app->post('/api/EventbriteAPI/addSingleEventInSerieEvents', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
@@ -21,6 +21,9 @@ $app->post('/api/EventbriteAPI/changeSingleEventInSerieEvents', function ($reque
     if(empty($post_data['args']['serieId'])) {
         $error[] = 'serieId cannot be empty';
     }
+    if(empty($post_data['args']['addChildren'])) {
+        $error[] = 'addChildren cannot be empty';
+    }
     
     if(!empty($error)) {
         $result['callback'] = 'error';
@@ -32,16 +35,7 @@ $app->post('/api/EventbriteAPI/changeSingleEventInSerieEvents', function ($reque
     $headers['Content-Type'] = 'application/json';
     $query_str = $settings['api_url'] . 'series/'.$post_data['args']['serieId'].'/events/';
     
-    $body = [];
-    if(!empty($post_data['args']['createChildren'])) {
-        $body['create_children'] = $post_data['args']['createChildren'];
-    }
-    if(!empty($post_data['args']['updateChildren'])) {
-        $body['update_children'] = $post_data['args']['updateChildren'];
-    }
-    if(!empty($post_data['args']['deleteChildren'])) {
-        $body['delete_children'] = $post_data['args']['deleteChildren'];
-    }
+    $body['create_children'] = $post_data['args']['addChildren'];
     
     $client = $this->httpClient;
 
