@@ -168,8 +168,7 @@ class EventbriteAPITest extends BaseTestCase {
         $var = '{
                     "args": {
                         "token": "'.$this->token.'",
-                        "startDate": "2016-10-01T13:00:00Z",
-                        "endDate": "2016-10-02T13:00:00Z"
+                        "eventIds": "28860239754"
                     }
                 }';
         $post_data = json_decode($var, true);
@@ -178,7 +177,7 @@ class EventbriteAPITest extends BaseTestCase {
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
-        $this->assertEquals('error', json_decode($response->getBody())->callback);
+        $this->assertEquals('success', json_decode($response->getBody())->callback);
     }
     
     public function testgetAttendeesReport() {
@@ -186,8 +185,7 @@ class EventbriteAPITest extends BaseTestCase {
         $var = '{
                     "args": {
                         "token": "'.$this->token.'",
-                        "startDate": "2016-10-01T13:00:00Z",
-                        "endDate": "2016-10-02T13:00:00Z"
+                        "eventIds": "28860239754"
                     }
                 }';
         $post_data = json_decode($var, true);
@@ -196,7 +194,7 @@ class EventbriteAPITest extends BaseTestCase {
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
-        $this->assertEquals('error', json_decode($response->getBody())->callback);
+        $this->assertEquals('success', json_decode($response->getBody())->callback);
     }
     
     public function testgetTimezones() {

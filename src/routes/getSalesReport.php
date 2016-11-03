@@ -18,6 +18,9 @@ $app->post('/api/EventbriteAPI/getSalesReport', function ($request, $response, $
     if(empty($post_data['args']['token'])) {
         $error[] = 'token cannot be empty';
     }
+    if(empty($post_data['args']['eventIds'])) {
+        $error[] = 'eventIds cannot be empty';
+    }
     
     if(!empty($error)) {
         $result['callback'] = 'error';
@@ -26,7 +29,6 @@ $app->post('/api/EventbriteAPI/getSalesReport', function ($request, $response, $
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['token'];
-    $headers['Content-Type'] = 'application/json';
     $query_str = $settings['api_url'] . 'reports/sales/';
     
     $body = [];

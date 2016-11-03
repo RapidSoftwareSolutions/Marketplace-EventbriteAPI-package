@@ -18,6 +18,8 @@ The Eventbrite API is the best way to integrate and extend Eventbrite for your e
 * [getSingleFormat](#getSingleFormat)
 * [getMedia](#getMedia)
 * [uploadMedia](#uploadMedia)
+* [getSalesReport](#getSalesReport)
+* [getAttendeesReport](#getAttendeesReport)
 * [getTimezones](#getTimezones)
 * [getRegions](#getRegions)
 * [getCountries](#getCountries)
@@ -170,6 +172,42 @@ Upload media.
 | cropTopLeftY| String     | Optional: Y coordinate for top-left corner of crop mask.
 | cropWidth   | String     | Optional: Crop mask width.
 | cropHeight  | String     | Optional: Crop mask height.
+
+<a name="getSalesReport"/>
+## EventbriteAPI.getSalesReport
+Returns a response of the aggregate sales data.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| token      | credentials| Required: The OAuth token obtained from Eventbrite.
+| eventIds   | String     | Required: List of public event IDs to report on.
+| eventStatus| String     | Optional: Event status to filter down results by (Valid choices are: all, live, or ended).
+| startDate  | String     | Optional: Optional start date to query.
+| endDate    | String     | Optional: Optional end date to query.
+| period     | String     | Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet.
+| filterBy   | String     | Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}
+| groupBy    | String     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).
+| dateFacet  | String     | Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).
+| timezone   | String     | Optional: Optional timezone. If unspecified picks the TZ of the first event.
+| randomSeed | String     | Optional: Random seed for dataset (default = 0). Aids in determinism.
+
+<a name="getAttendeesReport"/>
+## EventbriteAPI.getAttendeesReport
+Returns a response of the aggregate attendees data.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| token      | credentials| Required: The OAuth token obtained from Eventbrite.
+| eventIds   | String     | Required: List of public event IDs to report on.
+| eventStatus| String     | Optional: Event status to filter down results by (Valid choices are: all, live, or ended).
+| startDate  | String     | Optional: Optional start date to query.
+| endDate    | String     | Optional: Optional end date to query.
+| period     | String     | Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet.
+| filterBy   | String     | Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}
+| groupBy    | String     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).
+| dateFacet  | String     | Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).
+| timezone   | String     | Optional: Optional timezone. If unspecified picks the TZ of the first event.
+| randomSeed | String     | Optional: Random seed for dataset (default = 0). Aids in determinism.
 
 <a name="getTimezones"/>
 ## EventbriteAPI.getTimezones
