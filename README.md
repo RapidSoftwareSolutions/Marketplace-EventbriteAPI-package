@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/EventbriteAPI/functions?utm_source=RapidAPIGitHub_EventbriteFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # EventbriteAPI Package
 Find, create and organize events.
 * Domain: eventbrite.com
