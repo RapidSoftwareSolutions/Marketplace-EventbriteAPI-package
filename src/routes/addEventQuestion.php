@@ -46,8 +46,8 @@ $app->post('/api/EventbriteAPI/addEventQuestion', function ($request, $response,
     $query_str = $settings['api_url'] . 'events/'.$post_data['args']['eventId'].'/questions/';
     
     $body = [];
-    if(!empty($post_data['args']['asOwner'])) {
-        $body['as_owner'] = $post_data['args']['asOwner'];
+    if(is_bool($post_data['args']['asOwner'])) {
+        $body['as_owner'] = filter_var($post_data['args']['asOwner'], FILTER_VALIDATE_BOOLEAN);
     }
     
     $client = $this->httpClient;

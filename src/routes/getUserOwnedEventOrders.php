@@ -56,7 +56,10 @@ $app->post('/api/EventbriteAPI/getUserOwnedEventOrders', function ($request, $re
         $body['exclude_emails'] = $post_data['args']['excludeEmails'];
     }
     if(!empty($post_data['args']['changedSince'])) {
-        $body['changed_since'] = $post_data['args']['changedSince'];
+        $date = new DateTime($post_data['args']['changedSince']);
+        if ($date) {
+            $body['changed_since'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     
     $client = $this->httpClient;

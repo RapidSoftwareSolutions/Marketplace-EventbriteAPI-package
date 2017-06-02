@@ -51,7 +51,10 @@ $app->post('/api/EventbriteAPI/getEventAttendees', function ($request, $response
         $body['status'] = $post_data['args']['status'];
     }
     if(!empty($post_data['args']['changedSince'])) {
-        $body['changed_since'] = $post_data['args']['changedSince'];
+        $date = new DateTime($post_data['args']['changedSince']);
+        if ($date) {
+            $body['changed_since'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['lastItemSeen'])) {
         $body['last_item_seen'] = $post_data['args']['lastItemSeen'];

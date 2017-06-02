@@ -217,7 +217,14 @@
         },
         {
           "name": "type",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "image-event-logo",
+            "image-event-view-from-seat",
+            "image-organizer-logo",
+            "image-user-photo",
+            "image-structured-content"
+          ],
           "info": "The type of image to upload (Valid choices are: image-event-logo, image-event-view-from-seat, image-organizer-logo, image-user-photo, or image-structured-content).",
           "required": true
         },
@@ -281,19 +288,24 @@
         },
         {
           "name": "eventStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "all",
+            "live",
+            "ended"
+          ],
           "info": "Event status to filter down results by (Valid choices are: all, live, or ended).",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Optional start date to query.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Optional end date to query.",
           "required": false
         },
@@ -311,13 +323,37 @@
         },
         {
           "name": "groupBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "payment_method",
+            "payment_method_application",
+            "ticket",
+            "ticket_application",
+            "currency",
+            "event_currency",
+            "reservedSection",
+            "event",
+            "event_ticket",
+            "event_application",
+            "country",
+            "city",
+            "state",
+            "source"
+          ],
           "info": "Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).",
           "required": false
         },
         {
           "name": "dateFacet",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year",
+            "none"
+          ],
           "info": "Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).",
           "required": false
         },
@@ -357,25 +393,36 @@
         },
         {
           "name": "eventIds",
-          "type": "String",
+          "type": "List",
           "info": "List of public event IDs to report on.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": true
+          }
         },
         {
           "name": "eventStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "all",
+            "live",
+            "ended"
+          ],
           "info": "Event status to filter down results by (Valid choices are: all, live, or ended).",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Optional start date to query.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Optional end date to query.",
           "required": false
         },
@@ -399,7 +446,15 @@
         },
         {
           "name": "dateFacet",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year",
+            "none"
+          ],
           "info": "Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).",
           "required": false
         },
@@ -685,32 +740,44 @@
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "List",
           "info": "Only return events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "status",
+            "type": "String",
+            "info": "Status",
+            "required": false
+          }
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "start_asc",
+            "start_desc",
+            "created_asc",
+            "created_desc"
+          ],
           "info": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc).",
           "required": false
         },
         {
           "name": "startRangeDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with start dates after the given date.",
           "required": false
         },
         {
           "name": "endRangeDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with start dates before the given date.",
           "required": false
         },
         {
           "name": "onlyPublic",
-          "type": "String",
-          "info": "Only show public events even if viewing your own events. True or false.",
+          "type": "Boolean",
+          "info": "Only show public events even if viewing your own events.",
           "required": false
         }
       ],
@@ -941,31 +1008,43 @@
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "List",
           "info": "Only return events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "status",
+            "type": "String",
+            "info": "Status",
+            "required": false
+          }
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "start_asc",
+            "start_desc",
+            "created_asc",
+            "created_desc"
+          ],
           "info": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc).",
           "required": false
         },
         {
           "name": "startRangeDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with start dates after the given date.",
           "required": false
         },
         {
           "name": "endRangeDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with start dates before the given date.",
           "required": false
         },
         {
           "name": "onlyPublic",
-          "type": "String",
+          "type": "Boolean",
           "info": "Only show public events even if viewing your own events.",
           "required": false
         }
@@ -1151,7 +1230,12 @@
         },
         {
           "name": "timeFilter",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "all",
+            "past",
+            "current_future"
+          ],
           "info": "Limits results to either past or current & future events \/ orders. (Valid choices are: all, past, or current_future).",
           "required": false
         }
@@ -1241,21 +1325,33 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "start_asc",
+            "start_desc",
+            "created_asc",
+            "created_desc"
+          ],
           "info": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc).",
           "required": false
         },
         {
           "name": "showSeriesParent",
-          "type": "String",
+          "type": "Boolean",
           "info": "True: Will show parent of a serie instead of children False: Will show children of a serie (Default value).",
           "required": false
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "List",
           "info": "Filter by events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "status",
+            "type": "String",
+            "info": "Status",
+            "required": false
+          }
         }
       ],
       "callbacks": [
@@ -1293,21 +1389,35 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "all",
+            "draft",
+            "live",
+            "canceled",
+            "started",
+            "ended"
+          ],
           "info": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc).",
           "required": false
         },
         {
           "name": "showSeriesParent",
-          "type": "String",
+          "type": "Boolean",
           "info": "True: Will show parent of a serie instead of children False: Will show children of a serie (Default value).",
           "required": false
         },
         {
           "name": "status",
-          "type": "String",
-          "info": "Filter by events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended.",
-          "required": false
+          "type": "List",
+          "info": "Filter by events with a specific status set. Valid status: all, draft, live, canceled, started, ended.",
+          "required": false,
+          "structure": {
+            "name": "status",
+            "type": "String",
+            "info": "Status",
+            "required": false
+          }
         },
         {
           "name": "eventGroupId",
@@ -1345,13 +1455,17 @@
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "attending",
+            "not_attending"
+          ],
           "info": "Limits results to either confirmed attendees or cancelled\/refunded\/etc. attendees (Valid choices are: attending, or not_attending).",
           "required": false
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return resource changed on or after the time given.",
           "required": false
         }
@@ -1385,25 +1499,42 @@
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "active",
+            "inactive",
+            "all"
+          ],
           "info": "Filter to active (attending), inactive (not attending), or all (both) orders (Valid choices are: active, inactive, or all).",
           "required": false
         },
         {
           "name": "onlyEmails",
-          "type": "String",
+          "type": "List",
           "info": "Only include orders placed by one of these emails.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "email",
+            "type": "String",
+            "info": "Email",
+            "required": false
+          }
         },
         {
           "name": "excludeEmails",
-          "type": "String",
-          "info": "Don\u2019t include orders placed by any of these emails.",
-          "required": false
+          "type": "List",
+          "info": "Don't include orders placed by any of these emails.",
+          "required": false,
+          "structure": {
+            "name": "email",
+            "type": "String",
+            "info": "Email",
+            "required": false
+          }
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return resource changed on or after the time given.",
           "required": false
         }
@@ -1739,9 +1870,15 @@
         },
         {
           "name": "eventIds",
-          "type": "String",
+          "type": "List",
           "info": "Event ids to batch bookmark for the user.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "eventId",
+            "type": "String",
+            "info": "Event ID",
+            "required": false
+          }
         },
         {
           "name": "bookmarkListId",
@@ -1785,9 +1922,15 @@
         },
         {
           "name": "eventIds",
-          "type": "String",
+          "type": "List",
           "info": "Event ids to batch bookmark for the user.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "eventId",
+            "type": "String",
+            "info": "Event ID",
+            "required": false
+          }
         },
         {
           "name": "bookmarkListId",
@@ -1837,7 +1980,7 @@
         },
         {
           "name": "seriesParentStartUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start time of the event.",
           "required": true
         },
@@ -1849,7 +1992,7 @@
         },
         {
           "name": "seriesParentEndUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end time of the event.",
           "required": true
         },
@@ -1861,13 +2004,13 @@
         },
         {
           "name": "seriesParentHideStartDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the start date should be hidden. True or false.",
           "required": false
         },
         {
           "name": "seriesParentHideEndDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the end date should be hidden. True or false.",
           "required": false
         },
@@ -1885,13 +2028,13 @@
         },
         {
           "name": "seriesParentOnlineEvent",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is the event online-only (no venue)?. True or false.",
           "required": false
         },
         {
           "name": "seriesParentListed",
-          "type": "String",
+          "type": "Boolean",
           "info": "If the event is publicly listed and searchable. Defaults to true.",
           "required": false
         },
@@ -1963,9 +2106,15 @@
         },
         {
           "name": "deleteChildren",
-          "type": "JSON",
+          "type": "List",
           "info": "A list of IDs for child events that should be deleted. In the format: 1234,5678,9012",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": false
+          }
         }
       ],
       "callbacks": [
@@ -1996,7 +2145,7 @@
           "required": true
         },
         {
-          "name": "tracking\u0421ode",
+          "name": "trackingCode",
           "type": "String",
           "info": "Append the given tracking_code to the event URLs returned.",
           "required": false
@@ -2049,7 +2198,7 @@
         },
         {
           "name": "seriesParentStartUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start time of the event.",
           "required": true
         },
@@ -2061,7 +2210,7 @@
         },
         {
           "name": "seriesParentEndUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end time of the event.",
           "required": true
         },
@@ -2073,13 +2222,13 @@
         },
         {
           "name": "seriesParentHideStartDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the start date should be hidden. True or false.",
           "required": false
         },
         {
           "name": "seriesParentHideEndDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the end date should be hidden. True or false.",
           "required": false
         },
@@ -2097,13 +2246,13 @@
         },
         {
           "name": "seriesParentOnlineEvent",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is the event online-only (no venue)?. True or false.",
           "required": false
         },
         {
           "name": "seriesParentListed",
-          "type": "String",
+          "type": "Boolean",
           "info": "If the event is publicly listed and searchable. Defaults to true.",
           "required": false
         },
@@ -2175,9 +2324,15 @@
         },
         {
           "name": "deleteChildren",
-          "type": "JSON",
+          "type": "List",
           "info": "A list of IDs for child events that should be deleted. In the format: 1234,5678,9012",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": false
+          }
         }
       ],
       "callbacks": [
@@ -2321,7 +2476,12 @@
         },
         {
           "name": "timeFilter",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "all",
+            "past",
+            "current_future"
+          ],
           "info": "Limits results to either past or current & future events. (Valid choices are: all, past, or current_future).",
           "required": false
         },
@@ -2333,7 +2493,13 @@
         },
         {
           "name": "orderBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "start_asc",
+            "start_desc",
+            "created_asc",
+            "created_desc"
+          ],
           "info": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)",
           "required": false
         }
@@ -2401,9 +2567,15 @@
         },
         {
           "name": "deleteChildren",
-          "type": "JSON",
+          "type": "List",
           "info": "A list of IDs for child events that should be deleted. In the format: 1234,5678,9012",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": true
+          }
         }
       ],
       "callbacks": [
@@ -2435,8 +2607,14 @@
         },
         {
           "name": "sortBy",
-          "type": "String",
-          "info": "Parameter you want to sort by - options are \u201cdate\u201d, \u201cdistance\u201d and \u201cbest\u201d. Prefix with a hyphen to reverse the order, e.g. \u201c-date\u201d.",
+          "type": "Select",
+          "opions": [
+            "date",
+            "distance",
+            "best",
+            "-date"
+          ],
+          "info": "Parameter you want to sort by - options are \"date\", \"distance\" and \"best\". Prefix with a hyphen to reverse the order, e.g. \"-date\".",
           "required": false
         },
         {
@@ -2464,6 +2642,12 @@
           "required": false
         },
         {
+          "name": "location",
+          "type": "Map",
+          "info": "The location you want to search for events around",
+          "required": false
+        },
+        {
           "name": "locationViewportNortheastLatitude",
           "type": "String",
           "info": "The latitude of the northeast corner of a viewport.",
@@ -2476,6 +2660,12 @@
           "required": false
         },
         {
+          "name": "locationViewportNortheast",
+          "type": "Map",
+          "info": "The location of the northeast corner of a viewport",
+          "required": false
+        },
+        {
           "name": "locationViewportSouthwestLatitude",
           "type": "String",
           "info": "The latitude of the southwest corner of a viewport.",
@@ -2485,6 +2675,12 @@
           "name": "locationViewportSouthwestLongitude",
           "type": "String",
           "info": "The longitude of the southwest corner of a viewport.",
+          "required": false
+        },
+        {
+          "name": "locationViewportSouthwest",
+          "type": "Map",
+          "info": "The location of the southwest corner of a viewport",
           "required": false
         },
         {
@@ -2507,93 +2703,139 @@
         },
         {
           "name": "categories",
-          "type": "String",
+          "type": "List",
           "info": "Only return events under the given category IDs. This should be a comma delimited string of category IDs.",
-          "required": false
+          "required": false,
+          "stucture": {
+            "name": "category",
+            "type": "String",
+            "info": "Category",
+            "required": false
+          }
         },
         {
           "name": "subcategories",
-          "type": "String",
+          "type": "List",
           "info": "Only return events under the given subcategory IDs. This should be a comma delimited string of subcategory IDs.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "subCategory",
+            "type": "String",
+            "info": "Sub-category",
+            "required": false
+          }
         },
         {
           "name": "formats",
-          "type": "String",
+          "type": "List",
           "info": "Only return events with the given format IDs. This should be a comma delimited string of format IDs.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "format",
+            "type": "String",
+            "info": "Format",
+            "required": false
+          }
         },
         {
           "name": "price",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "free",
+            "paid"
+          ],
           "info": "Only return events that are \u201cfree\u201d or \u201cpaid\u201d",
           "required": false
         },
         {
           "name": "DateRangeStart",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with start dates after the given date.",
           "required": false
         },
         {
           "name": "DateRangeEnd",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with start dates before the given date.",
           "required": false
         },
         {
           "name": "startDateKeyword",
-          "type": "String",
-          "info": "Only return events with start dates within the given keyword date range. Keyword options are \u201cthis_week\u201d, \u201cnext_week\u201d, \u201cthis_weekend\u201d, \u201cnext_month\u201d, \u201cthis_month\u201d, \u201ctomorrow\u201d, \u201ctoday\u201d",
+          "type": "Select",
+          "options": [
+            "this_week",
+            "next_week",
+            "this_weekend",
+            "next_month",
+            "this_month",
+            "tomorrow",
+            "today"
+          ],
+          "info": "Only return events with start dates within the given keyword date range. Keyword options are \"this_week\", \"next_week\", \"this_weekend\", \"next_month\", \"this_month\", \"tomorrow\", \"today\"",
           "required": false
         },
         {
           "name": "ModifiedRangeStart",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with modified dates after the given UTC date.",
           "required": false
         },
         {
           "name": "ModifiedRangeEnd",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return events with modified dates before the given UTC date.",
           "required": false
         },
         {
           "name": "ModifiedKeyword",
-          "type": "String",
-          "info": "Only return events with modified dates within the given keyword date range. Keyword options are \u201cthis_week\u201d, \u201cnext_week\u201d, \u201cthis_weekend\u201d, \u201cnext_month\u201d, \u201cthis_month\u201d, \u201ctomorrow\u201d, \u201ctoday\u201d",
+          "type": "Select",
+          "options": [
+            "this_week",
+            "next_week",
+            "this_weekend",
+            "next_month",
+            "this_month",
+            "tomorrow",
+            "today"
+          ],
+          "info": "Only return events with modified dates within the given keyword date range. Keyword options are this_week, next_week, this_weekend, next_month, this_month, tomorrow, today",
           "required": false
         },
         {
           "name": "searchType",
           "type": "String",
-          "info": "Use the preconfigured settings for this type of search - Current option is \u201cpromoted\u201d",
+          "info": "Use the preconfigured settings for this type of search - Current option is promoted",
           "required": false
         },
         {
           "name": "includeAllSeriesInstances",
-          "type": "String",
+          "type": "Boolean",
           "info": "Boolean for whether or not you want to see all instances of repeating events in search results.",
           "required": false
         },
         {
           "name": "includeUnavailableEvents",
-          "type": "String",
+          "type": "Boolean",
           "info": "Boolean for whether or not you want to see events without tickets on sale.",
           "required": false
         },
         {
           "name": "incorporateUserAffinities",
           "type": "String",
-          "info": "Incorporate additional information from the user\u2019s historic preferences.",
+          "info": "Incorporate additional information from the user's historic preferences.",
           "required": false
         },
         {
           "name": "highAffinityCategories",
-          "type": "String",
+          "type": "List",
           "info": "Make search results prefer events in these categories. This should be a comma delimited string of category IDs.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "categoryId",
+            "type": "String",
+            "info": "Category ID",
+            "required": false
+          }
         }
       ],
       "callbacks": [
@@ -2637,7 +2879,7 @@
         },
         {
           "name": "eventStartUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start time of the event.",
           "required": true
         },
@@ -2649,7 +2891,7 @@
         },
         {
           "name": "eventEndUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end time of the event.",
           "required": true
         },
@@ -2661,13 +2903,13 @@
         },
         {
           "name": "eventHideStartDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the start date should be hidden.",
           "required": false
         },
         {
           "name": "eventHideEndDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the end date should be hidden.",
           "required": false
         },
@@ -2685,13 +2927,13 @@
         },
         {
           "name": "eventOnlineEvent",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is the event online-only (no venue).",
           "required": false
         },
         {
           "name": "eventListed",
-          "type": "String",
+          "type": "Boolean",
           "info": "If the event is publicly listed and searchable. Defaults to True.",
           "required": false
         },
@@ -2721,13 +2963,13 @@
         },
         {
           "name": "eventShareable",
-          "type": "String",
+          "type": "Boolean",
           "info": "If users can share the event on social media.",
           "required": false
         },
         {
           "name": "eventInviteOnly",
-          "type": "String",
+          "type": "Boolean",
           "info": "Only invited users can see the event page.",
           "required": false
         },
@@ -2745,7 +2987,7 @@
         },
         {
           "name": "eventShowRemaining",
-          "type": "String",
+          "type": "Boolean",
           "info": "If the remaining number of tickets is publicly visible on the event page.",
           "required": false
         },
@@ -2831,7 +3073,7 @@
         },
         {
           "name": "eventStartUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start time of the event.",
           "required": true
         },
@@ -2843,7 +3085,7 @@
         },
         {
           "name": "eventEndUtc",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end time of the event.",
           "required": true
         },
@@ -2855,13 +3097,13 @@
         },
         {
           "name": "eventHideStartDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the start date should be hidden.",
           "required": false
         },
         {
           "name": "eventHideEndDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether the end date should be hidden.",
           "required": false
         },
@@ -2879,13 +3121,13 @@
         },
         {
           "name": "eventOnlineEvent",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is the event online-only (no venue).",
           "required": false
         },
         {
           "name": "eventListed",
-          "type": "String",
+          "type": "Boolean",
           "info": "If the event is publicly listed and searchable. Defaults to True.",
           "required": false
         },
@@ -2915,13 +3157,13 @@
         },
         {
           "name": "eventShareable",
-          "type": "String",
+          "type": "Boolean",
           "info": "If users can share the event on social media.",
           "required": false
         },
         {
           "name": "eventInviteOnly",
-          "type": "String",
+          "type": "Boolean",
           "info": "Only invited users can see the event page.",
           "required": false
         },
@@ -2939,7 +3181,7 @@
         },
         {
           "name": "eventShowRemaining",
-          "type": "String",
+          "type": "Boolean",
           "info": "If the remaining number of tickets is publicly visible on the event page.",
           "required": false
         },
@@ -3119,55 +3361,55 @@
         },
         {
           "name": "showStartDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display the start date on the event listing.",
           "required": false
         },
         {
           "name": "showEndDate",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display the end date on the event listing.",
           "required": false
         },
         {
           "name": "showStartEndTime",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display event start and end time on the event listing.",
           "required": false
         },
         {
           "name": "showTimezone",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display the event timezone on the event listing.",
           "required": false
         },
         {
           "name": "showMap",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display a map to the venue on the event listing.",
           "required": false
         },
         {
           "name": "showRemaining",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display the number of remaining tickets.",
           "required": false
         },
         {
           "name": "showOrganizerFacebook",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display a link to the organizer\u2019s Facebook profile.",
           "required": false
         },
         {
           "name": "showOrganizerTwitter",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display a link to the organizer\u2019s Twitter profile.",
           "required": false
         },
         {
           "name": "showFacebookFriendsGoing",
-          "type": "String",
+          "type": "Boolean",
           "info": "Whether to display which of the user\u2019s Facebook friends are going.",
           "required": false
         },
@@ -3207,7 +3449,11 @@
         },
         {
           "name": "pos",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "online",
+            "at_the_door"
+          ],
           "info": "Only return ticket classes valid for the given point of sale (Valid choices are: online, or at_the_door).",
           "required": false
         }
@@ -3260,54 +3506,60 @@
         {
           "name": "cost",
           "type": "String",
-          "info": "Cost of the ticket (currently currency must match event currency) e.g. $45 would be \u2018USD,4500\u2019.",
+          "info": "Cost of the ticket (currently currency must match event currency) e.g. $45 would be \"USD,4500\".",
           "required": false
         },
         {
           "name": "donation",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is this a donation? (user-supplied cost)",
           "required": false
         },
         {
           "name": "free",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is this a free ticket?",
           "required": false
         },
         {
           "name": "includeFee",
-          "type": "String",
+          "type": "Boolean",
           "info": "Absorb the fee into the displayed cost.",
           "required": false
         },
         {
           "name": "splitFee",
-          "type": "String",
+          "type": "Boolean",
           "info": "Absorb the payment fee, but show the eventbrite fee.",
           "required": false
         },
         {
           "name": "hideDescription",
-          "type": "String",
+          "type": "Boolean",
           "info": "Hide the ticket description on the event page.",
           "required": false
         },
         {
           "name": "salesChannels",
-          "type": "String",
+          "type": "List",
           "info": "A list of all supported sales channels ([\u201conline\u201d], [\u201conline\u201d, \u201catd\u201d], [\u201catd\u201d]).",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "channel",
+            "type": "String",
+            "info": "Channel",
+            "required": false
+          }
         },
         {
           "name": "salesStart",
-          "type": "String",
+          "type": "DatePicker",
           "info": "When the ticket is available for sale (leave empty for \u2018when event published\u2019).",
           "required": false
         },
         {
           "name": "salesEnd",
-          "type": "String",
+          "type": "DatePicker",
           "info": "When the ticket stops being on sale (leave empty for \u2018one hour before event start\u2019).",
           "required": false
         },
@@ -3325,25 +3577,25 @@
         },
         {
           "name": "autoHide",
-          "type": "String",
+          "type": "Boolean",
           "info": "Hide this ticket when it is not on sale.",
           "required": false
         },
         {
           "name": "autoHideBefore",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Override reveal date for auto-hide.",
           "required": false
         },
         {
           "name": "autoHideAfter",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Override re-hide date for auto-hide.",
           "required": false
         },
         {
           "name": "hidden",
-          "type": "String",
+          "type": "Boolean",
           "info": "Hide this ticket.",
           "required": false
         },
@@ -3447,31 +3699,31 @@
         },
         {
           "name": "donation",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is this a donation? (user-supplied cost)",
           "required": false
         },
         {
           "name": "free",
-          "type": "String",
+          "type": "Boolean",
           "info": "Is this a free ticket?",
           "required": false
         },
         {
           "name": "includeFee",
-          "type": "String",
+          "type": "Boolean",
           "info": "Absorb the fee into the displayed cost.",
           "required": false
         },
         {
           "name": "splitFee",
-          "type": "String",
+          "type": "Boolean",
           "info": "Absorb the payment fee, but show the eventbrite fee.",
           "required": false
         },
         {
           "name": "hideDescription",
-          "type": "String",
+          "type": "Boolean",
           "info": "Hide the ticket description on the event page.",
           "required": false
         },
@@ -3483,13 +3735,13 @@
         },
         {
           "name": "salesStart",
-          "type": "String",
+          "type": "DatePicker",
           "info": "When the ticket is available for sale (leave empty for \u2018when event published\u2019).",
           "required": false
         },
         {
           "name": "salesEnd",
-          "type": "String",
+          "type": "DatePicker",
           "info": "When the ticket stops being on sale (leave empty for \u2018one hour before event start\u2019).",
           "required": false
         },
@@ -3507,25 +3759,25 @@
         },
         {
           "name": "autoHide",
-          "type": "String",
+          "type": "Boolean",
           "info": "Hide this ticket when it is not on sale.",
           "required": false
         },
         {
           "name": "autoHideBefore",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Override reveal date for auto-hide.",
           "required": false
         },
         {
           "name": "autoHideAfter",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Override re-hide date for auto-hide.",
           "required": false
         },
         {
           "name": "hidden",
-          "type": "String",
+          "type": "Boolean",
           "info": "Hide this ticket.",
           "required": false
         },
@@ -3599,7 +3851,7 @@
         },
         {
           "name": "asOwner",
-          "type": "String",
+          "type": "Boolean",
           "info": "Return private events and more details. True or false.",
           "required": false
         }
@@ -3633,13 +3885,18 @@
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "attending",
+            "not_attending",
+            "unpaid"
+          ],
           "info": "Limits results to either confirmed attendees or cancelled\/refunded\/etc. attendees (Valid choices are: attending, not_attending, or unpaid).",
           "required": false
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return attendees changed on or after the time given.",
           "required": false
         },
@@ -3679,13 +3936,18 @@
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "active",
+            "inactive",
+            "all"
+          ],
           "info": "Filter to active (attending), inactive (not attending), or all (both) orders (Valid choices are: active, inactive, or all).",
           "required": false
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return orders changed on or after the time given.",
           "required": false
         },
@@ -3697,15 +3959,27 @@
         },
         {
           "name": "onlyEmails",
-          "type": "String",
+          "type": "List",
           "info": "Only include orders placed by one of these emails.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "email",
+            "type": "String",
+            "info": "Email",
+            "required": false
+          }
         },
         {
           "name": "excludeEmails",
-          "type": "String",
+          "type": "List",
           "info": "Don\u2019t include orders placed by any of these emails.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "email",
+            "type": "String",
+            "info": "Email",
+            "required": false
+          }
         }
       ],
       "callbacks": [
@@ -3783,9 +4057,15 @@
         },
         {
           "name": "ticketIds",
-          "type": "String",
+          "type": "List",
           "info": "IDs of tickets to limit discount to.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": false
+          }
         },
         {
           "name": "quantityAvailable",
@@ -3795,13 +4075,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use from this date.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use until this date.",
           "required": false
         }
@@ -3893,9 +4173,15 @@
         },
         {
           "name": "ticketIds",
-          "type": "String",
+          "type": "List",
           "info": "IDs of tickets to limit discount to.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": false
+          }
         },
         {
           "name": "quantityAvailable",
@@ -3905,13 +4191,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use from this date.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use until this date.",
           "required": false
         }
@@ -3991,9 +4277,15 @@
         },
         {
           "name": "ticketIds",
-          "type": "String",
+          "type": "List",
           "info": "IDs of tickets to limit discount to.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": false
+          }
         },
         {
           "name": "quantityAvailable",
@@ -4003,13 +4295,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use from this date.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use until this date.",
           "required": false
         }
@@ -4101,9 +4393,15 @@
         },
         {
           "name": "ticketIds",
-          "type": "String",
+          "type": "List",
           "info": "IDs of tickets to limit discount to.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": false
+          }
         },
         {
           "name": "quantityAvailable",
@@ -4113,13 +4411,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use from this date.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use until this date.",
           "required": false
         }
@@ -4221,9 +4519,15 @@
         },
         {
           "name": "ticketIds",
-          "type": "String",
-          "info": "Comma-separated IDs of tickets to allow access to.",
-          "required": true
+          "type": "List",
+          "info": "List of ticket's ids to allow access to.",
+          "required": true,
+          "structure": {
+            "name": "id",
+            "type": "String",
+            "info": "ID",
+            "required": true
+          }
         },
         {
           "name": "quantityAvailable",
@@ -4233,13 +4537,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use from this date.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use until this date.",
           "required": false
         }
@@ -4319,7 +4623,7 @@
         },
         {
           "name": "ticketIds",
-          "type": "String",
+          "type": "List",
           "info": "Comma-separated IDs of tickets to allow access to.",
           "required": true
         },
@@ -4331,13 +4635,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use from this date.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Allow use until this date.",
           "required": false
         }
@@ -4371,7 +4675,7 @@
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return transfers changed on or after the time given.",
           "required": false
         }

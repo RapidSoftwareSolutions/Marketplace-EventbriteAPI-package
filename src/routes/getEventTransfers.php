@@ -47,7 +47,10 @@ $app->post('/api/EventbriteAPI/getEventTransfers', function ($request, $response
     
     $body = [];
     if(!empty($post_data['args']['changedSince'])) {
-        $body['changed_since'] = $post_data['args']['changedSince'];
+        $date = new DateTime($post_data['args']['changedSince']);
+        if ($date) {
+            $body['changed_since'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     
     $client = $this->httpClient;

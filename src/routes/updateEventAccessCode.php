@@ -60,10 +60,16 @@ $app->post('/api/EventbriteAPI/updateEventAccessCode', function ($request, $resp
         $body['access_code.quantity_available'] = $post_data['args']['quantityAvailable'];
     }
     if(!empty($post_data['args']['startDate'])) {
-        $body['access_code.start_date'] = $post_data['args']['startDate'];
+        $date = new DateTime($post_data['args']['startDate']);
+        if ($date) {
+            $body['access_code.start_date'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['endDate'])) {
-        $body['access_code.end_date'] = $post_data['args']['endDate'];
+        $date = new DateTime($post_data['args']['endDate']);
+        if ($date) {
+            $body['access_code.end_date'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     
     $client = $this->httpClient;

@@ -52,11 +52,16 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
     if(!empty($post_data['args']['orderBy'])) {
         $body['order_by'] = $post_data['args']['orderBy'];
     }
-    if(!empty($post_data['args']['showSeriesParent'])) {
-        $body['show_series_parent'] = $post_data['args']['showSeriesParent'];
+    if(is_bool($post_data['args']['show_series_parent'])) {
+        $body['show_series_parent'] = filter_var($post_data['args']['showSeriesParent'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['status'])) {
-        $body['status'] = $post_data['args']['status'];
+        if (is_array($post_data['args']['status'])) {
+            $body['status'] = implode(',', $post_data['args']['status']);
+        }
+        else {
+            $body['status'] = $post_data['args']['status'];
+        }
     }
     if(!empty($post_data['args']['eventGroupId'])) {
         $body['event_group_id'] = $post_data['args']['eventGroupId'];

@@ -50,7 +50,8 @@ $app->post('/api/EventbriteAPI/getUserOwnedEventAttendees', function ($request, 
         $body['status'] = $post_data['args']['status'];
     }
     if(!empty($post_data['args']['changedSince'])) {
-        $body['changed_since'] = $post_data['args']['changedSince'];
+        $date = new DateTime($post_data['args']['changedSince']);
+        $body['changed_since'] = $date->format("Y-m-d\TH:i:s\Z");
     }
     
     $client = $this->httpClient;

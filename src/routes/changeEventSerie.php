@@ -67,9 +67,15 @@ $app->post('/api/EventbriteAPI/changeEventSerie', function ($request, $response,
     $query_str = $settings['api_url'] . 'series/'.$post_data['args']['serieId'].'/';
     
     $body['series_parent.name.html'] = $post_data['args']['seriesParentName'];
-    $body['series_parent.start.utc'] = $post_data['args']['seriesParentStartUtc'];
+    $startUTC = new DateTime($post_data['args']['seriesParentStartUtc']);
+    $endUTC = new DateTime($post_data['args']['seriesParentEndUtc']);
+    if ($startUTC) {
+        $body['series_parent.start.utc'] = $startUTC->format('Y-m-d\TH:i:s\Z');
+    }
+    if ($endUTC) {
+        $body['series_parent.end.utc'] = $endUTC->format('Y-m-d\TH:i:s\Z');
+    }
     $body['series_parent.start.timezone'] = $post_data['args']['seriesParentStartTimezone'];
-    $body['series_parent.end.utc'] = $post_data['args']['seriesParentEndUtc'];
     $body['series_parent.end.timezone'] = $post_data['args']['seriesParentEndTimezone'];
     $body['series_parent.currency'] = $post_data['args']['seriesParentCurrency'];
     $body['create_children'] = $post_data['args']['createChildren'];
@@ -88,11 +94,11 @@ $app->post('/api/EventbriteAPI/changeEventSerie', function ($request, $response,
     if(!empty($post_data['args']['seriesParentVenueId'])) {
         $body['series_parent.venue_id'] = $post_data['args']['seriesParentVenueId'];
     }
-    if(!empty($post_data['args']['seriesParentOnlineEvent'])) {
-        $body['series_parent.online_event'] = $post_data['args']['seriesParentOnlineEvent'];
+    if(is_bool($post_data['args']['seriesParentOnlineEvent'])) {
+        $body['series_parent.online_event'] = filter_var($post_data['args']['seriesParentOnlineEvent'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['seriesParentListed'])) {
-        $body['series_parent.listed'] = $post_data['args']['seriesParentListed'];
+    if(is_bool($post_data['args']['seriesParentListed'])) {
+        $body['series_parent.listed'] = filter_var($post_data['args']['seriesParentListed'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['seriesParentLogoId'])) {
         $body['series_parent.listed'] = $post_data['args']['seriesParentLogoId'];

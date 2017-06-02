@@ -61,29 +61,35 @@ $app->post('/api/EventbriteAPI/updateEventTicketClass', function ($request, $res
     if(!empty($post_data['args']['cost'])) {
         $body['ticket_class.cost'] = $post_data['args']['cost'];
     }
-    if(!empty($post_data['args']['donation'])) {
-        $body['ticket_class.donation'] = $post_data['args']['donation'];
+    if(is_bool($post_data['args']['donation'])) {
+        $body['ticket_class.donation'] = filter_var($post_data['args']['donation'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['free'])) {
-        $body['ticket_class.free'] = $post_data['args']['free'];
+    if(is_bool($post_data['args']['free'])) {
+        $body['ticket_class.free'] = filter_var($post_data['args']['free'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['includeFee'])) {
-        $body['ticket_class.include_fee'] = $post_data['args']['includeFee'];
+    if(is_bool($post_data['args']['includeFee'])) {
+        $body['ticket_class.include_fee'] = filter_var($post_data['args']['includeFee'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['splitFee'])) {
-        $body['ticket_class.split_fee'] = $post_data['args']['splitFee'];
+    if(is_bool($post_data['args']['splitFee'])) {
+        $body['ticket_class.split_fee'] = filter_var($post_data['args']['splitFee'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['hideDescription'])) {
-        $body['ticket_class.hide_description'] = $post_data['args']['hideDescription'];
+    if(is_bool($post_data['args']['hideDescription'])) {
+        $body['ticket_class.hide_description'] = filter_var($post_data['args']['hideDescription'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['salesChannels'])) {
         $body['ticket_class.sales_channels'] = $post_data['args']['salesChannels'];
     }
     if(!empty($post_data['args']['salesStart'])) {
-        $body['ticket_class.sales_start'] = $post_data['args']['salesStart'];
+        $date = new DateTime($post_data['args']['salesStart']);
+        if ($date) {
+            $body['ticket_class.sales_start'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['salesEnd'])) {
-        $body['ticket_class.sales_end'] = $post_data['args']['salesEnd'];
+        $date = new DateTime($post_data['args']['salesEnd']);
+        if ($date) {
+            $body['ticket_class.sales_end'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['salesStartAfter'])) {
         $body['ticket_class.sales_start_after'] = $post_data['args']['salesStartAfter'];
@@ -94,17 +100,23 @@ $app->post('/api/EventbriteAPI/updateEventTicketClass', function ($request, $res
     if(!empty($post_data['args']['maximumQuantity'])) {
         $body['ticket_class.maximum_quantity'] = $post_data['args']['maximumQuantity'];
     }
-    if(!empty($post_data['args']['autoHide'])) {
-        $body['ticket_class.auto_hide'] = $post_data['args']['autoHide'];
+    if(is_bool($post_data['args']['autoHide'])) {
+        $body['ticket_class.auto_hide'] = filter_var($post_data['args']['autoHide'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['autoHideBefore'])) {
-        $body['ticket_class.auto_hide_before'] = $post_data['args']['autoHideBefore'];
+        $date = new DateTime($post_data['args']['autoHideBefore']);
+        if ($date) {
+            $body['ticket_class.auto_hide_before'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['autoHideAfter'])) {
-        $body['ticket_class.auto_hide_after'] = $post_data['args']['autoHideAfter'];
+        $date = new DateTime($post_data['args']['autoHideAfter']);
+        if ($date) {
+            $body['ticket_class.auto_hide_after'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
-    if(!empty($post_data['args']['hidden'])) {
-        $body['ticket_class.hidden'] = $post_data['args']['hidden'];
+    if(is_bool($post_data['args']['hidden'])) {
+        $body['ticket_class.hidden'] = filter_var($post_data['args']['hidden'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['orderConfirmationMessage'])) {
         $body['ticket_class.order_confirmation_message'] = $post_data['args']['orderConfirmationMessage'];

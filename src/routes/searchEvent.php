@@ -55,23 +55,44 @@ $app->post('/api/EventbriteAPI/searchEvent', function ($request, $response, $arg
     if(!empty($post_data['args']['locationWithin'])) {
         $body['location.within'] = $post_data['args']['locationWithin'];
     }
-    if(!empty($post_data['args']['locationLatitude'])) {
-        $body['location.latitude'] = $post_data['args']['locationLatitude'];
+    if (!empty($post_data['args']['location'])) {
+        $location = explode(',', str_replace(" ", "", $post_data['args']['location']));
+        $body['location.latitude'] = $location[0];
+        $body['location.longitude'] = $location[1];
     }
-    if(!empty($post_data['args']['locationLongitude'])) {
-        $body['location.longitude'] = $post_data['args']['locationLongitude'];
+    else {
+        if (!empty($post_data['args']['locationLatitude'])) {
+            $body['location.latitude'] = $post_data['args']['locationLatitude'];
+        }
+        if (!empty($post_data['args']['locationLongitude'])) {
+            $body['location.longitude'] = $post_data['args']['locationLongitude'];
+        }
     }
-    if(!empty($post_data['args']['locationViewportNortheastLatitude'])) {
-        $body['location.viewport.northeast.latitude'] = $post_data['args']['locationViewportNortheastLatitude'];
+    if (!empty($post_data['args']['locationViewportNortheast'])) {
+        $location = explode(',', str_replace(" ", "", $post_data['args']['locationViewportNortheast']));
+        $body['location.viewport.northeast.latitude'] = $location[0];
+        $body['location.viewport.northeast.longitude'] = $location[1];
     }
-    if(!empty($post_data['args']['locationViewportNortheastLongitude'])) {
-        $body['location.viewport.northeast.longitude'] = $post_data['args']['locationViewportNortheastLongitude'];
+    else {
+        if (!empty($post_data['args']['locationViewportNortheastLatitude'])) {
+            $body['location.viewport.northeast.latitude'] = $post_data['args']['locationViewportNortheastLatitude'];
+        }
+        if (!empty($post_data['args']['locationViewportNortheastLongitude'])) {
+            $body['location.viewport.northeast.longitude'] = $post_data['args']['locationViewportNortheastLongitude'];
+        }
     }
-    if(!empty($post_data['args']['locationViewportSouthwestLatitude'])) {
-        $body['location.viewport.southwest.latitude'] = $post_data['args']['locationViewportSouthwestLatitude'];
+    if (!empty($post_data['args']['locationViewportSouthwest'])) {
+        $location = explode(',', str_replace(" ", "", $post_data['args']['locationViewportSouthwest']));
+        $body['location.viewport.southwest.latitude'] = $location[0];
+        $body['location.viewport.southwest.longitude'] = $location[1];
     }
-    if(!empty($post_data['args']['locationViewportSouthwestLongitude'])) {
-        $body['location.viewport.southwest.longitude'] = $post_data['args']['locationViewportSouthwestLongitude'];
+    else {
+        if (!empty($post_data['args']['locationViewportSouthwestLatitude'])) {
+            $body['location.viewport.southwest.latitude'] = $post_data['args']['locationViewportSouthwestLatitude'];
+        }
+        if (!empty($post_data['args']['locationViewportSouthwestLongitude'])) {
+            $body['location.viewport.southwest.longitude'] = $post_data['args']['locationViewportSouthwestLongitude'];
+        }
     }
     if(!empty($post_data['args']['organizerId'])) {
         $body['organizer.id'] = $post_data['args']['organizerId'];
@@ -95,19 +116,31 @@ $app->post('/api/EventbriteAPI/searchEvent', function ($request, $response, $arg
         $body['price'] = $post_data['args']['price'];
     }
     if(!empty($post_data['args']['DateRangeStart'])) {
-        $body['start_date.range_start'] = $post_data['args']['DateRangeStart'];
+        $date = new DateTime($post_data['args']['DateRangeStart']);
+        if ($date) {
+            $body['start_date.range_start'] = $date->format('Y-m-d\TH:i:s');
+        }
     }
     if(!empty($post_data['args']['DateRangeEnd'])) {
-        $body['start_date.range_end'] = $post_data['args']['DateRangeEnd'];
+        $date = new DateTime($post_data['args']['DateRangeEnd']);
+        if ($date) {
+            $body['start_date.range_end'] = $date->format('Y-m-d\TH:i:s');
+        }
     }
     if(!empty($post_data['args']['startDateKeyword'])) {
         $body['start_date.keyword'] = $post_data['args']['startDateKeyword'];
     }
     if(!empty($post_data['args']['ModifiedRangeStart'])) {
-        $body['date_modified.range_start'] = $post_data['args']['ModifiedRangeStart'];
+        $date = new DateTime($post_data['args']['ModifiedRangeStart']);
+        if ($date) {
+            $body['date_modified.range_start'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['ModifiedRangeEnd'])) {
-        $body['date_modified.range_end'] = $post_data['args']['ModifiedRangeEnd'];
+        $date = new DateTime($post_data['args']['ModifiedRangeEnd']);
+        if ($date) {
+            $body['date_modified.range_end'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['ModifiedKeyword'])) {
         $body['date_modified.keyword'] = $post_data['args']['ModifiedKeyword'];
@@ -115,17 +148,22 @@ $app->post('/api/EventbriteAPI/searchEvent', function ($request, $response, $arg
     if(!empty($post_data['args']['searchType'])) {
         $body['search_type'] = $post_data['args']['searchType'];
     }
-    if(!empty($post_data['args']['includeAllSeriesInstances'])) {
-        $body['include_all_series_instances'] = $post_data['args']['includeAllSeriesInstances'];
+    if(is_bool($post_data['args']['includeAllSeriesInstances'])) {
+        $body['include_all_series_instances'] = filter_var($post_data['args']['includeAllSeriesInstances'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['includeUnavailableEvents'])) {
-        $body['include_unavailable_events'] = $post_data['args']['includeUnavailableEvents'];
+    if(is_bool($post_data['args']['includeUnavailableEvents'])) {
+        $body['include_unavailable_events'] = filter_var($post_data['args']['includeUnavailableEvents'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['incorporateUserAffinities'])) {
         $body['incorporate_user_affinities'] = $post_data['args']['incorporateUserAffinities'];
     }
     if(!empty($post_data['args']['highAffinityCategories'])) {
-        $body['high_affinity_categories'] = $post_data['args']['highAffinityCategories'];
+        if (is_array($post_data['args']['highAffinityCategories'])) {
+            $body['high_affinity_categories'] = implode(',', $post_data['args']['highAffinityCategories']);
+        }
+        else {
+            $body['high_affinity_categories'] = $post_data['args']['highAffinityCategories'];
+        }
     }
 
     $client = $this->httpClient;

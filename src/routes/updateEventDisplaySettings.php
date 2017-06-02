@@ -46,32 +46,32 @@ $app->post('/api/EventbriteAPI/updateEventDisplaySettings', function ($request, 
     $query_str = $settings['api_url'] . 'events/'.$post_data['args']['eventId'].'/display_settings/';
     
     $body = [];
-    if(!empty($post_data['args']['showStartDate'])) {
-        $body['display_settings.show_start_date'] = $post_data['args']['showStartDate'];
+    if(is_bool($post_data['args']['showStartDate'])) {
+        $body['display_settings.show_start_date'] = filter_var($post_data['args']['showStartDate'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showEndDate'])) {
-        $body['display_settings.show_end_date'] = $post_data['args']['showEndDate'];
+    if(is_bool($post_data['args']['showEndDate'])) {
+        $body['display_settings.show_end_date'] = filter_var($post_data['args']['showEndDate'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showStartEndTime'])) {
-        $body['display_settings.show_start_end_time'] = $post_data['args']['showStartEndTime'];
+    if(is_bool($post_data['args']['showStartEndTime'])) {
+        $body['display_settings.show_start_end_time'] = filter_var($post_data['args']['showStartEndTime'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showTimezone'])) {
-        $body['display_settings.show_timezone'] = $post_data['args']['showTimezone'];
+    if(is_bool($post_data['args']['showTimezone'])) {
+        $body['display_settings.show_timezone'] = filter_var($post_data['args']['showTimezone'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showMap'])) {
-        $body['display_settings.show_map'] = $post_data['args']['showMap'];
+    if(is_bool($post_data['args']['showMap'])) {
+        $body['display_settings.show_map'] = filter_var($post_data['args']['showMap'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showRemaining'])) {
-        $body['display_settings.show_remaining'] = $post_data['args']['showRemaining'];
+    if(is_bool($post_data['args']['showRemaining'])) {
+        $body['display_settings.show_remaining'] = filter_var($post_data['args']['showRemaining'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showOrganizerFacebook'])) {
-        $body['display_settings.show_organizer_facebook'] = $post_data['args']['showOrganizerFacebook'];
+    if(is_bool($post_data['args']['showOrganizerFacebook'])) {
+        $body['display_settings.show_organizer_facebook'] = filter_var($post_data['args']['showOrganizerFacebook'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showOrganizerTwitter'])) {
-        $body['display_settings.show_organizer_twitter'] = $post_data['args']['showOrganizerTwitter'];
+    if(is_bool($post_data['args']['showOrganizerTwitter'])) {
+        $body['display_settings.show_organizer_twitter'] = filter_var($post_data['args']['showOrganizerTwitter'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(!empty($post_data['args']['showFacebookFriendsGoing'])) {
-        $body['display_settings.show_facebook_friends_going'] = $post_data['args']['showFacebookFriendsGoing'];
+    if(is_bool($post_data['args']['showFacebookFriendsGoing'])) {
+        $body['display_settings.show_facebook_friends_going'] = filter_var($post_data['args']['showFacebookFriendsGoing'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['terminology'])) {
         $body['display_settings.terminology'] = $post_data['args']['terminology'];

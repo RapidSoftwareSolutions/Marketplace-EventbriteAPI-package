@@ -47,19 +47,30 @@ $app->post('/api/EventbriteAPI/getOrganizerEvents', function ($request, $respons
     
     $body = [];
     if(!empty($post_data['args']['status'])) {
-        $body['status'] = $post_data['args']['status'];
+        if (is_array($post_data['args']['status'])) {
+            $body['status'] = implode(',', $post_data['args']['status']);
+        }
+        else {
+            $body['status'] = $post_data['args']['status'];
+        }
     }
     if(!empty($post_data['args']['orderBy'])) {
         $body['order_by'] = $post_data['args']['orderBy'];
     }
     if(!empty($post_data['args']['startRangeDate'])) {
-        $body['start_date.range_start'] = $post_data['args']['startRangeDate'];
+        $date = new DateTime($post_data['args']['startRangeDate']);
+        if ($date) {
+            $body['start_date.range_start'] = $date->format('Y-m-d\TH:i:s');
+        }
     }
     if(!empty($post_data['args']['endRangeDate'])) {
-        $body['start_date.range_end'] = $post_data['args']['endRangeDate'];
+        $date = new DateTime($post_data['args']['endRangeDate']);
+        if ($date) {
+            $body['start_date.range_end'] = $date->format('Y-m-d\TH:i:s');;
+        }
     }
-    if(!empty($post_data['args']['onlyPublic'])) {
-        $body['only_public'] = $post_data['args']['onlyPublic'];
+    if(isset($post_data['args']['onlyPublic'])) {
+        $body['only_public'] = filter_var($post_data['args']['onlyPublic'], FILTER_VALIDATE_BOOLEAN);
     }
     
     $client = $this->httpClient;

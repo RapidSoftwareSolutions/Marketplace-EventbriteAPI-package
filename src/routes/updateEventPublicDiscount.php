@@ -65,10 +65,16 @@ $app->post('/api/EventbriteAPI/updateEventPublicDiscount', function ($request, $
         $body['discount']['quantity_available'] = $post_data['args']['quantityAvailable'];
     }
     if(!empty($post_data['args']['startDate'])) {
-        $body['discount']['start_date'] = $post_data['args']['startDate'];
+        $date = new DateTime($post_data['args']['startDate']);
+        if ($date) {
+            $body['discount']['start_date'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     if(!empty($post_data['args']['endDate'])) {
-        $body['discount']['end_date'] = $post_data['args']['endDate'];
+        $date = new DateTime($post_data['args']['endDate']);
+        if ($date) {
+            $body['discount']['end_date'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
     }
     
     $client = $this->httpClient;

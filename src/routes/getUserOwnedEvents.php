@@ -49,11 +49,16 @@ $app->post('/api/EventbriteAPI/getUserOwnedEvents', function ($request, $respons
     if(!empty($post_data['args']['orderBy'])) {
         $body['order_by'] = $post_data['args']['orderBy'];
     }
-    if(!empty($post_data['args']['showSeriesParent'])) {
-        $body['show_series_parent'] = $post_data['args']['showSeriesParent'];
+    if(isset($post_data['args']['showSeriesParent'])) {
+        $body['show_series_parent'] = filter_var($post_data['args']['showSeriesParent'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['status'])) {
-        $body['status'] = $post_data['args']['status'];
+        if (is_array($post_data['args']['status'])) {
+            $body['status'] = implode(',', $post_data['args']['status']);
+        }
+        else {
+            $body['status'] = $post_data['args']['status'];
+        }
     }
     
     $client = $this->httpClient;

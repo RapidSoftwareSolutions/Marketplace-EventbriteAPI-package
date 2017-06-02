@@ -52,10 +52,16 @@ $app->post('/api/EventbriteAPI/getSalesReport', function ($request, $response, $
         $body['event_status'] = $post_data['args']['eventStatus'];
     }
     if(!empty($post_data['args']['startDate'])) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $date = new DateTime($post_data['args']['startDate']);
+        if ($date) {
+            $body['start_date'] = $date->format(DateTime::ISO8601);
+        }
     }
     if(!empty($post_data['args']['endDate'])) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $date = new DateTime($post_data['args']['endDate']);
+        if ($date) {
+            $body['end_date'] = $date->format(DateTime::ISO8601);
+        }
     }
     if(!empty($post_data['args']['period'])) {
         $body['period'] = $post_data['args']['period'];
