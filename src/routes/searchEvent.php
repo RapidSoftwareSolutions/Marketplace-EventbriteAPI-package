@@ -163,10 +163,10 @@ $app->post('/api/EventbriteAPI/searchEvent', function ($request, $response, $arg
     if(!empty($post_data['args']['searchType'])) {
         $body['search_type'] = $post_data['args']['searchType'];
     }
-    if(is_bool($post_data['args']['includeAllSeriesInstances'])) {
+    if(isset($post_data['args']['includeAllSeriesInstances']) && is_bool($post_data['args']['includeAllSeriesInstances'])) {
         $body['include_all_series_instances'] = filter_var($post_data['args']['includeAllSeriesInstances'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(is_bool($post_data['args']['includeUnavailableEvents'])) {
+    if(isset($post_data['args']['includeUnavailableEvents']) && is_bool($post_data['args']['includeUnavailableEvents'])) {
         $body['include_unavailable_events'] = filter_var($post_data['args']['includeUnavailableEvents'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['incorporateUserAffinities'])) {

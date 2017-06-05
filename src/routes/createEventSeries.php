@@ -83,19 +83,19 @@ $app->post('/api/EventbriteAPI/createEventSeries', function ($request, $response
     if(!empty($post_data['args']['seriesParentOrganizerId'])) {
         $body['series_parent.organizer_id'] = $post_data['args']['seriesParentOrganizerId'];
     }
-    if(is_bool($post_data['args']['seriesParentHideStartDate'])) {
+    if(isset($post_data['args']['seriesParentHideStartDate']) && is_bool($post_data['args']['seriesParentHideStartDate'])) {
         $body['series_parent.hide_start_date'] = filter_var($post_data['args']['seriesParentHideStartDate'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(is_bool($post_data['args']['seriesParentHideEndDate'])) {
+    if(isset($post_data['args']['seriesParentHideEndDate']) && is_bool($post_data['args']['seriesParentHideEndDate'])) {
         $body['series_parent.hide_end_date'] = filter_var($post_data['args']['seriesParentHideEndDate'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['seriesParentVenueId'])) {
         $body['series_parent.venue_id'] = $post_data['args']['seriesParentVenueId'];
     }
-    if(is_bool($post_data['args']['seriesParentOnlineEvent'])) {
+    if(isset($post_data['args']['seriesParentOnlineEvent']) && is_bool($post_data['args']['seriesParentOnlineEvent'])) {
         $body['series_parent.online_event'] = filter_var($post_data['args']['seriesParentOnlineEvent'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(is_bool($post_data['args']['seriesParentListed'])) {
+    if(isset($post_data['args']['seriesParentListed']) && is_bool($post_data['args']['seriesParentListed'])) {
         $body['series_parent.listed'] = filter_var($post_data['args']['seriesParentListed'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['seriesParentLogoId'])) {
