@@ -55,7 +55,12 @@ $app->post('/api/EventbriteAPI/updateEventAccessCode', function ($request, $resp
     $query_str = $settings['api_url'] . 'events/'.$post_data['args']['eventId'].'/access_codes/'.$post_data['args']['accessCodeId'].'/';
     
     $body['access_code.code'] = $post_data['args']['code'];
-    $body['access_code.ticket_ids'] = $post_data['args']['ticketIds'];
+    if (is_array($post_data['args']['ticketIds'])) {
+        $body['access_code.ticket_ids'] = implode(',', $post_data['args']['ticketIds']);
+    }
+    else {
+        $body['access_code.ticket_ids'] = $post_data['args']['ticketIds'];
+    }
     if(!empty($post_data['args']['quantityAvailable'])) {
         $body['access_code.quantity_available'] = $post_data['args']['quantityAvailable'];
     }

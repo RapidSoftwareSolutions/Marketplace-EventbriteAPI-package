@@ -50,7 +50,12 @@ $app->post('/api/EventbriteAPI/deleteBookmark', function ($request, $response, $
         $body['event_id'] = $post_data['args']['eventId'];
     }
     if(!empty($post_data['args']['eventIds'])) {
-        $body['event_ids'] = $post_data['args']['eventIds'];
+        if (is_array($post_data['args']['eventIds'])) {
+            $body['event_ids'] = implode(',', $post_data['args']['eventIds']);
+        }
+        else {
+            $body['event_ids'] = $post_data['args']['eventIds'];
+        }
     }
     if(!empty($post_data['args']['bookmarkListId'])) {
         $body['bookmark_list_id'] = $post_data['args']['bookmarkListId'];

@@ -46,7 +46,12 @@ $app->post('/api/EventbriteAPI/getSalesReport', function ($request, $response, $
     
     $body = [];
     if(!empty($post_data['args']['eventIds'])) {
-        $body['event_ids'] = $post_data['args']['eventIds'];
+        if (is_array($post_data['args']['eventIds'])) {
+            $body['event_ids'] = implode(',', $post_data['args']['eventIds']);
+        }
+        else {
+            $body['event_ids'] = $post_data['args']['eventIds'];
+        }
     }
     if(!empty($post_data['args']['eventStatus'])) {
         $body['event_status'] = $post_data['args']['eventStatus'];

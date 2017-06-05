@@ -59,7 +59,12 @@ $app->post('/api/EventbriteAPI/updateEventDiscount', function ($request, $respon
         $body['discount.percent_off'] = $post_data['args']['percentOff'];
     }
     if(!empty($post_data['args']['ticketIds'])) {
-        $body['discount.ticket_ids'] = $post_data['args']['ticketIds'];
+        if (is_array($post_data['args']['ticketIds'])) {
+            $body['discount.ticket_ids'] = $post_data['args']['ticketIds'];
+        }
+        else {
+            $body['discount.ticket_ids'] = $post_data['args']['ticketIds'];
+        }
     }
     if(!empty($post_data['args']['quantityAvailable'])) {
         $body['discount.quantity_available'] = $post_data['args']['quantityAvailable'];

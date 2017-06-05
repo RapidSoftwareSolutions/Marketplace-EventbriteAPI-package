@@ -84,7 +84,7 @@ Returns a response of the aggregate sales data.
 | Field      | Type       | Description
 |------------|------------|----------
 | token      | credentials| Required: The OAuth token obtained from Eventbrite.
-| eventIds   | String     | Required: List of public event IDs to report on.
+| eventIds   | List       | Required: List of public event IDs to report on.
 | eventStatus| Select     | Optional: Event status to filter down results by (Valid choices are: all, live, or ended).
 | startDate  | DatePicker | Optional: Optional start date to query.
 | endDate    | DatePicker | Optional: Optional end date to query.

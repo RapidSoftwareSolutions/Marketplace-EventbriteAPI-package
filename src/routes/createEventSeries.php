@@ -129,7 +129,12 @@ $app->post('/api/EventbriteAPI/createEventSeries', function ($request, $response
         $body['update_children'] = $post_data['args']['updateChildren'];
     }
     if(!empty($post_data['args']['deleteChildren'])) {
-        $body['delete_children'] = $post_data['args']['deleteChildren'];
+        if (is_array($post_data['args']['deleteChildren'])) {
+            $body['delete_children'] = implode(',', $post_data['args']['deleteChildren']);
+        }
+        else {
+            $body['delete_children'] = $post_data['args']['deleteChildren'];
+        }
     }
     
     $client = $this->httpClient;

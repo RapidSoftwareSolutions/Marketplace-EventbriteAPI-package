@@ -104,13 +104,28 @@ $app->post('/api/EventbriteAPI/searchEvent', function ($request, $response, $arg
         $body['tracking_code'] = $post_data['args']['trackingCode'];
     }
     if(!empty($post_data['args']['categories'])) {
-        $body['categories'] = $post_data['args']['categories'];
+        if (is_array($post_data['args']['categories'])) {
+            $body['categories'] = implode(',', $post_data['args']['categories']);
+        }
+        else {
+            $body['categories'] = $post_data['args']['categories'];
+        }
     }
     if(!empty($post_data['args']['subcategories'])) {
-        $body['subcategories'] = $post_data['args']['subcategories'];
+        if (is_array($post_data['args']['subcategories'])) {
+            $body['subcategories'] = implode(',', $post_data['args']['subcategories']);
+        }
+        else {
+            $body['subcategories'] = $post_data['args']['subcategories'];
+        }
     }
     if(!empty($post_data['args']['formats'])) {
-        $body['formats'] = $post_data['args']['formats'];
+        if (is_array($post_data['args']['formats'])) {
+            $body['formats'] = implode(',', $post_data['args']['formats']);
+        }
+        else {
+            $body['formats'] = $post_data['args']['formats'];
+        }
     }
     if(!empty($post_data['args']['price'])) {
         $body['price'] = $post_data['args']['price'];

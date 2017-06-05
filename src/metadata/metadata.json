@@ -2636,51 +2636,15 @@
           "required": false
         },
         {
-          "name": "locationLatitude",
-          "type": "String",
-          "info": "The latitude of of the location you want to search for events around.",
-          "required": false
-        },
-        {
-          "name": "locationLongitude",
-          "type": "String",
-          "info": "The longitude of the location you want to search for events around.",
-          "required": false
-        },
-        {
           "name": "location",
           "type": "Map",
           "info": "The location you want to search for events around",
           "required": false
         },
         {
-          "name": "locationViewportNortheastLatitude",
-          "type": "String",
-          "info": "The latitude of the northeast corner of a viewport.",
-          "required": false
-        },
-        {
-          "name": "locationViewportNortheastLongitude",
-          "type": "String",
-          "info": "The longitude of the northeast corner of a viewport.",
-          "required": false
-        },
-        {
           "name": "locationViewportNortheast",
           "type": "Map",
           "info": "The location of the northeast corner of a viewport",
-          "required": false
-        },
-        {
-          "name": "locationViewportSouthwestLatitude",
-          "type": "String",
-          "info": "The latitude of the southwest corner of a viewport.",
-          "required": false
-        },
-        {
-          "name": "locationViewportSouthwestLongitude",
-          "type": "String",
-          "info": "The longitude of the southwest corner of a viewport.",
           "required": false
         },
         {
@@ -2712,7 +2676,7 @@
           "type": "List",
           "info": "Only return events under the given category IDs. This should be a comma delimited string of category IDs.",
           "required": false,
-          "stucture": {
+          "structure": {
             "name": "category",
             "type": "String",
             "info": "Category",
@@ -4630,8 +4594,14 @@
         {
           "name": "ticketIds",
           "type": "List",
-          "info": "Comma-separated IDs of tickets to allow access to.",
-          "required": true
+          "info": "List IDs of tickets to allow access to.",
+          "required": true,
+          "structure": {
+            "name": "ticketId",
+            "type": "String",
+            "info": "Ticket ID",
+            "required": true
+          }
         },
         {
           "name": "quantityAvailable",

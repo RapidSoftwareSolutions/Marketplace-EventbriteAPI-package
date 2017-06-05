@@ -74,7 +74,12 @@ $app->post('/api/EventbriteAPI/createEventTicketClass', function ($request, $res
         $body['ticket_class.hide_description'] = filter_var($post_data['args']['hideDescription'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['salesChannels'])) {
-        $body['ticket_class.sales_channels'] = $post_data['args']['salesChannels'];
+        if (is_array($post_data['args']['salesChannels'])) {
+            $body['ticket_class.sales_channels'] = implode(',', $post_data['args']['salesChannels']);
+        }
+        else {
+            $body['ticket_class.sales_channels'] = $post_data['args']['salesChannels'];
+        }
     }
     if(!empty($post_data['args']['salesStart'])) {
         $date = new DateTime($post_data['args']['salesStart']);

@@ -47,8 +47,13 @@ $app->post('/api/EventbriteAPI/deleteSingleEventInSerieEvents', function ($reque
     $headers['Authorization'] = "Bearer " . $post_data['args']['token'];
     $headers['Content-Type'] = 'application/json';
     $query_str = $settings['api_url'] . 'series/'.$post_data['args']['serieId'].'/events/';
-    
-    $body['delete_children'] = $post_data['args']['deleteChildren'];
+
+    if (is_array($post_data['args']['deleteChildren'])) {
+        $body['delete_children'] = implode(',', $post_data['args']['deleteChildren']);
+    }
+    else {
+        $body['delete_children'] = $post_data['args']['deleteChildren'];
+    }
     
     $client = $this->httpClient;
 

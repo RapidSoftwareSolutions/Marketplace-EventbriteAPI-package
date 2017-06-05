@@ -50,10 +50,20 @@ $app->post('/api/EventbriteAPI/getUserOwnedEventOrders', function ($request, $re
         $body['status'] = $post_data['args']['status'];
     }
     if(!empty($post_data['args']['onlyEmails'])) {
-        $body['only_emails'] = $post_data['args']['onlyEmails'];
+        if (is_array($post_data['args']['onlyEmails'])) {
+            $body['only_emails'] = implode(',', $post_data['args']['onlyEmails']);
+        }
+        else {
+            $body['only_emails'] = $post_data['args']['onlyEmails'];
+        }
     }
     if(!empty($post_data['args']['excludeEmails'])) {
-        $body['exclude_emails'] = $post_data['args']['excludeEmails'];
+        if (is_array($post_data['args']['excludeEmails'])) {
+            $body['exclude_emails'] = $post_data['args']['excludeEmails'];
+        }
+        else {
+            $body['exclude_emails'] = $post_data['args']['excludeEmails'];
+        }
     }
     if(!empty($post_data['args']['changedSince'])) {
         $date = new DateTime($post_data['args']['changedSince']);
