@@ -282,9 +282,15 @@
         },
         {
           "name": "eventIds",
-          "type": "String",
+          "type": "List",
           "info": "List of public event IDs to report on.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "eventId",
+            "type": "String",
+            "info": "Event ID",
+            "required": true
+          }
         },
         {
           "name": "eventStatus",
