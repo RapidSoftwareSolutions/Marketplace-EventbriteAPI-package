@@ -47,7 +47,13 @@ $app->post('/api/EventbriteAPI/getUserOrders', function ($request, $response, $a
     
     $body = [];
     if(!empty($post_data['args']['changedSince'])) {
-        $body['changed_since'] = $post_data['args']['changedSince'];
+        $date = \DateTime::createFromFormat('Y-m-d H:i:s', $post_data['args']['changedSince']);
+        if ($date) {
+            $body['changed_since'] = $date->format('Y-m-d\TH:i:s\Z');
+        }
+        else {
+            $body['changed_since'] = $post_data['args']['changedSince'];
+        }
     }
     if(!empty($post_data['args']['timeFilter'])) {
         $body['time_filter'] = $post_data['args']['timeFilter'];

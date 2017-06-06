@@ -1230,7 +1230,7 @@
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Only return resource changed on or after the time given.",
           "required": false
         },
@@ -2614,7 +2614,7 @@
         {
           "name": "sortBy",
           "type": "Select",
-          "opions": [
+          "options": [
             "date",
             "distance",
             "best",

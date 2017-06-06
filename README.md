@@ -289,7 +289,7 @@ Returns a user for the specified user as user.
 |-------------|------------|----------
 | token       | credentials| Required: The OAuth token obtained from Eventbrite.
 | userId      | String     | Required: The ID of the user. If you want to get details about the currently authenticated user, use "me" value.
-| changedSince| String     | Optional: Only return resource changed on or after the time given.
+| changedSince| DatePicker | Optional: Only return resource changed on or after the time given.
 | timeFilter  | Select     | Optional: Limits results to either past or current & future events / orders. (Valid choices are: all, past, or current_future).
 
 ## EventbriteAPI.getUserVenues
