@@ -31,7 +31,7 @@
     "Go to App Management (https://www.eventbrite.com/myaccount/apps/)",
     "Create a new app",
     "After creation new app you will see the link Show Client Secret and OAuth Token. Click on it to show your OAuth token."
-  ]
+  ],
   "blocks": [
     {
       "name": "getCategories",
