@@ -92,6 +92,8 @@ $routes = [
     'getEventTeams',
     'getEventTeam',
     'getTeamAttendees',
+    'getUsersAssortment',
+    'setUsersAssortment',
     'metadata'
 ];
 foreach($routes as $file) {

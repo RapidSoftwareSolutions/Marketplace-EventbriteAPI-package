@@ -32,6 +32,9 @@ $app->post('/api/EventbriteAPI/updateEventDisplaySettings', function ($request, 
     if(empty($post_data['args']['eventId'])) {
         $error[] = 'eventId';
     }
+    if(empty($post_data['args']['terminology'])) {
+        $error[] = 'terminology';
+    }
     
     if(!empty($error)) {
         $result['callback'] = 'error';
@@ -46,31 +49,31 @@ $app->post('/api/EventbriteAPI/updateEventDisplaySettings', function ($request, 
     $query_str = $settings['api_url'] . 'events/'.$post_data['args']['eventId'].'/display_settings/';
     
     $body = [];
-    if(isset($post_data['args']['showStartDate']) && is_bool($post_data['args']['showStartDate'])) {
+    if(isset($post_data['args']['showStartDate']) && !empty($post_data['args']['showStartDate'])) {
         $body['display_settings.show_start_date'] = filter_var($post_data['args']['showStartDate'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showEndDate']) && is_bool($post_data['args']['showEndDate'])) {
+    if(isset($post_data['args']['showEndDate']) && !empty($post_data['args']['showEndDate'])) {
         $body['display_settings.show_end_date'] = filter_var($post_data['args']['showEndDate'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showStartEndTime']) && is_bool($post_data['args']['showStartEndTime'])) {
+    if(isset($post_data['args']['showStartEndTime']) && !empty($post_data['args']['showStartEndTime'])) {
         $body['display_settings.show_start_end_time'] = filter_var($post_data['args']['showStartEndTime'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showTimezone']) && is_bool($post_data['args']['showTimezone'])) {
+    if(isset($post_data['args']['showTimezone']) && !empty($post_data['args']['showTimezone'])) {
         $body['display_settings.show_timezone'] = filter_var($post_data['args']['showTimezone'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showMap']) && is_bool($post_data['args']['showMap'])) {
+    if(isset($post_data['args']['showMap']) && !empty($post_data['args']['showMap'])) {
         $body['display_settings.show_map'] = filter_var($post_data['args']['showMap'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showRemaining']) && is_bool($post_data['args']['showRemaining'])) {
+    if(isset($post_data['args']['showRemaining']) && !empty($post_data['args']['showRemaining'])) {
         $body['display_settings.show_remaining'] = filter_var($post_data['args']['showRemaining'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showOrganizerFacebook']) && is_bool($post_data['args']['showOrganizerFacebook'])) {
+    if(isset($post_data['args']['showOrganizerFacebook']) && !empty($post_data['args']['showOrganizerFacebook'])) {
         $body['display_settings.show_organizer_facebook'] = filter_var($post_data['args']['showOrganizerFacebook'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showOrganizerTwitter']) && is_bool($post_data['args']['showOrganizerTwitter'])) {
+    if(isset($post_data['args']['showOrganizerTwitter']) && !empty($post_data['args']['showOrganizerTwitter'])) {
         $body['display_settings.show_organizer_twitter'] = filter_var($post_data['args']['showOrganizerTwitter'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['showFacebookFriendsGoing']) && is_bool($post_data['args']['showFacebookFriendsGoing'])) {
+    if(isset($post_data['args']['showFacebookFriendsGoing']) && !empty($post_data['args']['showFacebookFriendsGoing'])) {
         $body['display_settings.show_facebook_friends_going'] = filter_var($post_data['args']['showFacebookFriendsGoing'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['terminology'])) {

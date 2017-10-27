@@ -45,8 +45,8 @@ $app->post('/api/EventbriteAPI/updateOrganizer', function ($request, $response, 
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['token'];
-    $headers['Content-Type'] = 'application/json';
-    $query_str = $settings['api_url'] . 'organizers/'.$post_data['args']['organizerId'];
+   // $headers['Content-Type'] = 'application/json';
+    $query_str = $settings['api_url'] . 'organizers/'.$post_data['args']['organizerId'].'/';
     
     $body['organizer.name'] = $post_data['args']['organizerName'];
     if(!empty($post_data['args']['organizerDescription'])) {

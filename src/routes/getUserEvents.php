@@ -66,7 +66,17 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
     if(!empty($post_data['args']['eventGroupId'])) {
         $body['event_group_id'] = $post_data['args']['eventGroupId'];
     }
-    
+
+    if(!empty($post_data['args']['page'])) {
+        $body['page'] = $post_data['args']['page'];
+    }
+
+    if(!empty($post_data['args']['continuation'])) {
+        $body['continuation'] = $post_data['args']['continuation'];
+    }
+
+
+
     $client = $this->httpClient;
 
     try {
@@ -81,14 +91,14 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
         
         $all_data[] = $rawBody;
         
-        if($rawBody->pagination->page_count != 1) {
-            $pagin = $this->pager;
-            $ret = $pagin->page($query_str, 2, $headers, 'events');
-            
-            $merge = array_merge($all_data[0]->events, $ret);
-        
-            $all_data[0]->events = $merge;
-        }
+//        if($rawBody->pagination->page_count != 1) {
+//            $pagin = $this->pager;
+//            $ret = $pagin->page($query_str, 2, $headers, 'events');
+//
+//            $merge = array_merge($all_data[0]->events, $ret);
+//
+//            $all_data[0]->events = $merge;
+//        }
         
         if($resp->getStatusCode() == '200') {
             $result['callback'] = 'success';
@@ -131,6 +141,5 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
         $result['contextWrites']['to']['status_msg'] = 'Something went wrong inside the package.';
 
     }
-
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 });

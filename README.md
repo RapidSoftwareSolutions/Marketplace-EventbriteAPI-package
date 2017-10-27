@@ -2,7 +2,7 @@
 
 # EventbriteAPI Package
 Find, create and organize events.
-* Domain: eventbrite.com
+* Domain: [eventbrite.com](https://www.eventbrite.com)
 * Credentials: token
 
 ## How to get credentials: 
@@ -99,7 +99,7 @@ Returns a response of the aggregate sales data.
 | endDate    | DatePicker | Optional: Optional end date to query.
 | period     | String     | Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet.
 | filterBy   | String     | Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}
-| groupBy    | Select     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).
+| groupBy    | Select     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state,sales_channel_lvl_1,sales_channel_lvl_2,sales_channel_lvl_3).
 | dateFacet  | Select     | Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).
 | timezone   | String     | Optional: Optional timezone. If unspecified picks the TZ of the first event.
 | randomSeed | String     | Optional: Random seed for dataset (default = 0). Aids in determinism.
@@ -116,7 +116,7 @@ Returns a response of the aggregate attendees data.
 | endDate    | DatePicker | Optional: Optional end date to query.
 | period     | String     | Optional: Time period to provide aggregation for in units of the selected dateFacet. For example, if dateFacet=hour, then period=3 returns 3 hours worth of data from the current time in the event timezone. Day is the default choice if no dateFacet.
 | filterBy   | String     | Optional: Optional filters for sales/attendees data formatted as: {“ticket_ids”: [1234, 5678], “countries”: [“US”],...}
-| groupBy    | String     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state, or source).
+| groupBy    | String     | Optional: Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state,sales_channel_lvl_1,sales_channel_lvl_2,sales_channel_lvl_3).
 | dateFacet  | Select     | Optional: Optional date aggregation level to return data for. Day is the default choice. Monthly aggregation is represented by the first of the month. Weekly aggregation is represented by the ending Sunday of the week, where a week is defined as Monday-Sunday. (Valid choices are: hour, day, week, month, year, or none).
 | timezone   | String     | Optional: Optional timezone. If unspecified picks the TZ of the first event.
 | randomSeed | String     | Optional: Random seed for dataset (default = 0). Aids in determinism.
@@ -210,8 +210,7 @@ Updates a venue and returns it as an object.
 | token                | credentials| Required: The OAuth token obtained from Eventbrite.
 | venueId              | String     | Required: The id of the venue.
 | venueName            | String     | Optional: The name of the venue.
-| venueAddressLatitude | String     | Optional: The latitude of the coordinates for the venue.
-| venueAddressLongitude| String     | Optional: The longitude of the coordinates for the venue.
+| venueAddressCoordinates | String     | Optional: The latitude and longitude for the venue.
 | venueOrganizerId     | String     | Optional: The organizer this venue belongs to (optional - leave this off to use the default organizer).
 | venueAddress1        | String     | Optional: The first line of the address.
 | venueAddress2        | String     | Optional: The second line of the address.
@@ -227,8 +226,7 @@ Creates a new venue with associated address.
 |----------------------|------------|----------
 | token                | credentials| Required: The OAuth token obtained from Eventbrite.
 | venueName            | String     | Required: The name of the venue.
-| venueAddressLatitude | String     | Optional: The latitude of the coordinates for the venue.
-| venueAddressLongitude| String     | Optional: The longitude of the coordinates for the venue.
+| venueAddressCoordinates | String     | Optional: The latitude and longitude for the venue.
 | venueOrganizerId     | String     | Optional: The organizer this venue belongs to (optional - leave this off to use the default organizer).
 | venueAddress1        | String     | Optional: The first line of the address.
 | venueAddress2        | String     | Optional: The second line of the address.
@@ -292,7 +290,7 @@ Returns a user for the specified user as user.
 | userId| String     | Required: The ID of the user. If you want to get details about the currently authenticated user, use "me" value.
 
 ## EventbriteAPI.getUserOrders
-Returns a user for the specified user as user.
+Returns a paginated response of orders, under the key orders, of all orders the user has placed (i.e. where the user was the person buying the tickets).
 
 | Field       | Type       | Description
 |-------------|------------|----------
@@ -327,6 +325,8 @@ Returns a response of events, under the key events, of all events the user owns 
 | orderBy         | Select     | Optional: How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc).
 | showSeriesParent| Boolean    | Optional: True: Will show parent of a serie instead of children False: Will show children of a serie (Default value).
 | status          | List       | Optional: Filter by events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended.
+| page                             | Number| Optional: The next page of the results.
+| continuation                     | String| Optional: A string containing the continuation token.See more in `Paginated Responses` section.
 
 ## EventbriteAPI.getUserEvents
 Returns a response of events, under the key events, of all events the user has access to.
@@ -340,6 +340,8 @@ Returns a response of events, under the key events, of all events the user has a
 | showSeriesParent| Boolean    | Optional: True: Will show parent of a serie instead of children False: Will show children of a serie (Default value).
 | status          | List     | Optional: Filter by events with a specific status set. This should be a comma delimited string of status. Valid status: all, draft, live, canceled, started, ended.
 | eventGroupId    | String     | Optional: Filter event results by eventGroupId
+| page                             | Number| Optional: The next page of the results.
+| continuation                     | String| Optional: A string containing the continuation token.See more in `Paginated Responses` section.
 
 ## EventbriteAPI.getUserOwnedEventAttendees
 Returns a response of attendees, under the key attendees, of attendees visiting any of the events the user owns.
@@ -448,7 +450,7 @@ Adds a new bookmark for the user. Returns {"created": true}. A user is only auth
 | userId        | String     | Required: The ID of the user. If you want to get details about the currently authenticated user, use "me" value.
 | eventId       | String     | Optional: Event id to bookmark for the user.
 | eventIds      | List       | Optional: Event ids to batch bookmark for the user.
-| bookmarkListId| String     | Optional: Optional Bookmark list id to save the bookmark(s) to.
+| bookmarkListId| String     | Optional: Bookmark list id to save the bookmark(s) to.
 
 ## EventbriteAPI.deleteBookmark
 Removes the specified bookmark from the event for the user. Returns {"deleted": true}. A user is only authorized to unsave his/her own events.
@@ -711,6 +713,8 @@ Allows you to retrieve a response of public event objects from across Eventbrite
 | includeUnavailableEvents          | Boolean    | Optional: Boolean for whether or not you want to see events without tickets on sale.
 | incorporateUserAffinities         | String     | Optional: Incorporate additional information from the user’s historic preferences.
 | highAffinityCategories            | List       | Optional: Make search results prefer events in these categories. This should be a comma delimited string of category IDs.
+| page                             | Number| Optional: The next page of the results.
+| continuation                     | String| Optional: A string containing the continuation token.See more in `Paginated Responses` section.
 
 ## EventbriteAPI.createEvent
 Makes a new event, and returns an event for the specified event. Does not support the creation of repeating event series.
@@ -855,20 +859,20 @@ Creates a new ticket class, returning the result as a ticket_class under the key
 |-------------------------|------------|----------
 | token                   | credentials| Required: The OAuth token obtained from Eventbrite.
 | eventId                 | String     | Required: The ID of the event.
-| name                    | String     | Optional: Name of this ticket type.
+| name                    | String     | Required: Name of this ticket type.
 | description             | String     | Optional: Description of the ticket.
-| quantityTotal           | String     | Optional: Total available number of this ticket.
-| cost                    | String     | Optional: Cost of the ticket (currently currency must match event currency) e.g. $45 would be ‘USD,4500’.
+| quantityTotal           | String     | Required: Total available number of this ticket.
+| cost                    | String     | Required: Cost of the ticket (currently currency must match event currency) e.g. $45 would be ‘USD,4500’.
 | donation                | Boolean    | Optional: Is this a donation? (user-supplied cost)
 | free                    | Boolean    | Optional: Is this a free ticket?
 | includeFee              | Boolean    | Optional: Absorb the fee into the displayed cost.
 | splitFee                | Boolean    | Optional: Absorb the payment fee, but show the eventbrite fee.
 | hideDescription         | Boolean    | Optional: Hide the ticket description on the event page.
-| salesChannels           | String     | Optional: A list of all supported sales channels ([“online”], [“online”, “atd”], [“atd”]).
+| salesChannels           | String     | Optional: A list of all supported sales channels (For example - online, atd).
 | salesStart              | DatePicker | Optional: When the ticket is available for sale (leave empty for ‘when event published’).
 | salesEnd                | DatePicker | Optional: When the ticket stops being on sale (leave empty for ‘one hour before event start’).
 | salesStartAfter         | String     | Optional: The ID of another ticket class - when it sells out, this class will go on sale.
-| minimumQuantity         | String     | Optional: Minimum number per order.
+| minimumQuantity         | Number     | Optional: Minimum number per order.
 | autoHide                | Boolean    | Optional: Hide this ticket when it is not on sale.
 | autoHideBefore          | DatePicker | Optional: Override reveal date for auto-hide.
 | autoHideAfter           | DatePicker | Optional: Override re-hide date for auto-hide.
@@ -963,7 +967,7 @@ Returns a response with a key of discounts, containing a list of discounts avail
 | eventId| String     | Required: The ID of the event.
 
 ## EventbriteAPI.createEventDiscount
-Returns a response with a key of discounts, containing a list of discounts available on this event.
+Creates a new discount; returns the result as a discount as the key discount.
 
 | Field            | Type       | Description
 |------------------|------------|----------
@@ -1003,7 +1007,7 @@ Updates a discount; returns the result as a discount as the key discount.
 | endDate          | DatePicker | Optional: Allow use until this date.
 
 ## EventbriteAPI.getEventPublicDiscounts
-Updates a discount; returns the result as a discount as the key discount.
+Returns a paginated response with a key of discounts, containing a list of public discounts available on this event. Note that public discounts and discounts have exactly the same form and structure; they’re just namespaced separately, and public ones (and the public GET endpoints) are visible to anyone who can see the event.
 
 | Field  | Type       | Description
 |--------|------------|----------
@@ -1137,4 +1141,84 @@ Returns attendees for a single teams.
 | token  | credentials| Required: The OAuth token obtained from Eventbrite.
 | eventId| String     | Required: The ID of the event.
 | teamId | String     | Required: The ID of the team.
+
+## EventbriteAPI.getUsersAssortment
+Retrieve the assortment for the user.
+
+| Field | Type       | Description
+|-------|------------|----------
+| token | credentials| Required: The OAuth token obtained from Eventbrite.
+| userId| String     | Required: The ID of the user. If you want to get details about the currently authenticated user, use "me" value.
+
+## EventbriteAPI.setUsersAssortment
+Set a user’s assortment and returns the assortment for the specified user.
+
+| Field | Type       | Description
+|-------|------------|----------
+| token | credentials| Required: The OAuth token obtained from Eventbrite.
+| userId| String     | Required: The ID of the user. If you want to get details about the currently authenticated user, use "me" value.
+| plan | String | Required: The assortments package to upgrade/downgrade to. (Valid choices are: package1, or package2).
+
+
+## Paginated Responses
+
+All API endpoints which return multiple objects will return paginated responses; as well as the list of objects (which will usually be under a key like events or attendees, depending on the endpoint) there will also be a pagination key:
+```
+{
+    "pagination": {
+        "object_count": 13,
+        "page_number": 2,
+        "page_size": 50,
+        "page_count": 2,
+        "continuation": "dGhpcyBpcyBhIGNvbnRpbnVhdGlvbiB0b2tlbg"
+    },
+    "events": [
+        ...
+    ]
+}
+```
+
+This pagination key gives you information about the number of pages in the result, and how many objects are returned:
+
+- page_number: The current page number (starts at 1)
+- page_size: The number of objects on each page (roughly)
+- object_count: The total number of objects across all pages (optional)
+- page_count: The total number of pages (starting at 1) (optional)
+- continuation: A token to return to the server to get the next set of results (see “Continuated Responses” below)
+
+You can specify the page number you would like to request using the page parameter. However, page sizes are fixed, usually around 50 objects per page, but it may be smaller or larger depending on the particular endpoint (the sizes are tuned to improve API response speed and cacheability).
+
+In addition, you’re not guaranteed to get back the given number of items per page; you may get more or less depending on pagination backend optimizations. It should be treated as a rough guide.
+
+Note that while we guarantee stable ordering of objects in paginated resources, the objects being returned may change between requests (e.g. the orders endpoint for a fast-selling event; between requesting page 1 and page 2, more items may have appeared on or been removed from page 1).
+
+These endpoints will usually have an alternative way of querying without missing objects, however, often based off of modified times. See the individual endpoint pages for details.
+
+Also note that on some endpoints, you won’t get back object_count and page_count, and you’re expected to just keep incrementing the page number until you get the BAD_PAGE error or you have enough data. These endpoints typically have a very large number of results (for example, the endpoint that lists every event on Eventbrite), and calculating the exact count would take too long.
+
+#### Continuated Responses
+
+In addition to standard pagination, some endpoints will also include continuation tokens. A continuation token is a string returned by the server that the client is expected to include in the next request to get the next page of results. In lieu of, or in addition to, the pagination items listed above, the following keys will be added to the pagination key in the response:
+- continuation: a string containing the continuation token
+- has_more_items: a boolean indicating if the next request will contain any results
+
+The intended way to use continuation tokens is:
+
+- Make an initial request to an endpoint.
+- Store the token returned by the server, and include it in the next request
+- When all records have been retrieved, the continuation key will not be present in the response.
+
+
+In this case, there is no continuation key, so there are no more results. The next request can be made without a continuation token to get new results.
+
+In addition to continuation, we also include a has_more_items key to indicate to the client whether a subsequent request will yield any results. This is a convenience for the client, and subsequent requests would return no results.
+```
+{
+    "pagination": {
+        ...
+        "has_more_items": false
+    },
+    "events": []
+}
+```
 

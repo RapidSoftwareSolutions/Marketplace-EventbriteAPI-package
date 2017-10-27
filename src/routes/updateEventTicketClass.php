@@ -61,19 +61,19 @@ $app->post('/api/EventbriteAPI/updateEventTicketClass', function ($request, $res
     if(!empty($post_data['args']['cost'])) {
         $body['ticket_class.cost'] = $post_data['args']['cost'];
     }
-    if(isset($post_data['args']['donation']) && is_bool($post_data['args']['donation'])) {
+    if(isset($post_data['args']['donation']) && !empty($post_data['args']['donation'])) {
         $body['ticket_class.donation'] = filter_var($post_data['args']['donation'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['free']) && is_bool($post_data['args']['free'])) {
+    if(isset($post_data['args']['free']) && !empty($post_data['args']['free'])) {
         $body['ticket_class.free'] = filter_var($post_data['args']['free'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['includeFee']) && is_bool($post_data['args']['includeFee'])) {
+    if(isset($post_data['args']['includeFee']) && !empty($post_data['args']['includeFee'])) {
         $body['ticket_class.include_fee'] = filter_var($post_data['args']['includeFee'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['splitFee']) && is_bool($post_data['args']['splitFee'])) {
+    if(isset($post_data['args']['splitFee']) && !empty($post_data['args']['splitFee'])) {
         $body['ticket_class.split_fee'] = filter_var($post_data['args']['splitFee'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['hideDescription']) && is_bool($post_data['args']['hideDescription'])) {
+    if(isset($post_data['args']['hideDescription']) && !empty($post_data['args']['hideDescription'])) {
         $body['ticket_class.hide_description'] = filter_var($post_data['args']['hideDescription'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['salesChannels'])) {
@@ -100,7 +100,7 @@ $app->post('/api/EventbriteAPI/updateEventTicketClass', function ($request, $res
     if(!empty($post_data['args']['maximumQuantity'])) {
         $body['ticket_class.maximum_quantity'] = $post_data['args']['maximumQuantity'];
     }
-    if(isset($post_data['args']['autoHide']) && is_bool($post_data['args']['autoHide'])) {
+    if(isset($post_data['args']['autoHide']) && !empty($post_data['args']['autoHide'])) {
         $body['ticket_class.auto_hide'] = filter_var($post_data['args']['autoHide'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['autoHideBefore'])) {
@@ -115,7 +115,7 @@ $app->post('/api/EventbriteAPI/updateEventTicketClass', function ($request, $res
             $body['ticket_class.auto_hide_after'] = $date->format('Y-m-d\TH:i:s\Z');
         }
     }
-    if(isset($post_data['args']['hidden']) && is_bool($post_data['args']['hidden'])) {
+    if(isset($post_data['args']['hidden']) && !empty($post_data['args']['hidden'])) {
         $body['ticket_class.hidden'] = filter_var($post_data['args']['hidden'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['orderConfirmationMessage'])) {

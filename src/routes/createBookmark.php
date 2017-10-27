@@ -32,6 +32,12 @@ $app->post('/api/EventbriteAPI/createBookmark', function ($request, $response, $
     if(empty($post_data['args']['userId'])) {
         $error[] = 'userId';
     }
+
+    if(empty($post_data['args']['eventIds']) && empty($post_data['args']['bookmarkListId']) && empty($post_data['args']['eventId']))
+    {
+        $error[] = 'eventIds or bookmarkListId or eventId';
+
+    }
     
     if(!empty($error)) {
         $result['callback'] = 'error';

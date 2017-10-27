@@ -77,19 +77,19 @@ $app->post('/api/EventbriteAPI/updateEvent', function ($request, $response, $arg
     if(!empty($post_data['args']['eventOrganizerId'])) {
         $body['event.organizer_id'] = $post_data['args']['eventOrganizerId'];
     }
-    if(isset($post_data['args']['eventHideStartDate']) && is_bool($post_data['args']['eventHideStartDate'])) {
+    if(isset($post_data['args']['eventHideStartDate']) && !empty($post_data['args']['eventHideStartDate'])) {
         $body['event.hide_start_date'] = filter_var($post_data['args']['eventHideStartDate'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['eventHideEndDate']) && is_bool($post_data['args']['eventHideEndDate'])) {
+    if(isset($post_data['args']['eventHideEndDate']) && !empty($post_data['args']['eventHideEndDate'])) {
         $body['event.hide_end_date'] = filter_var($post_data['args']['eventHideEndDate'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['eventVenueId'])) {
         $body['event.venue_id'] = $post_data['args']['eventVenueId'];
     }
-    if(isset($post_data['args']['eventOnlineEvent']) && is_bool($post_data['args']['eventOnlineEvent'])) {
+    if(isset($post_data['args']['eventOnlineEvent']) && !empty($post_data['args']['eventOnlineEvent'])) {
         $body['event.online_event'] = filter_var($post_data['args']['eventOnlineEvent'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['eventListed']) && is_bool($post_data['args']['eventListed'])) {
+    if(isset($post_data['args']['eventListed']) && !empty($post_data['args']['eventListed'])) {
         $body['event.listed'] = filter_var($post_data['args']['eventListed'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['eventLogoId'])) {
@@ -104,10 +104,10 @@ $app->post('/api/EventbriteAPI/updateEvent', function ($request, $response, $arg
     if(!empty($post_data['args']['eventFormatId'])) {
         $body['event.format_id'] = $post_data['args']['eventFormatId'];
     }
-    if(isset($post_data['args']['eventShareable']) && is_bool($post_data['args']['eventShareable'])) {
+    if(isset($post_data['args']['eventShareable']) && !empty($post_data['args']['eventShareable'])) {
         $body['event.shareable'] = filter_var($post_data['args']['eventShareable'], FILTER_VALIDATE_BOOLEAN);
     }
-    if(isset($post_data['args']['eventInviteOnly']) && is_bool($post_data['args']['eventInviteOnly'])) {
+    if(isset($post_data['args']['eventInviteOnly']) && !empty($post_data['args']['eventInviteOnly'])) {
         $body['event.invite_only'] = filter_var($post_data['args']['eventInviteOnly'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['eventPassword'])) {
@@ -116,7 +116,7 @@ $app->post('/api/EventbriteAPI/updateEvent', function ($request, $response, $arg
     if(!empty($post_data['args']['eventCapacity'])) {
         $body['event.capacity'] = $post_data['args']['eventCapacity'];
     }
-    if(isset($post_data['args']['eventShowRemaining']) && is_bool($post_data['args']['eventShowRemaining'])) {
+    if(isset($post_data['args']['eventShowRemaining']) && !empty($post_data['args']['eventShowRemaining'])) {
         $body['event.show_remaining'] = filter_var($post_data['args']['eventShowRemaining'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['eventSource'])) {

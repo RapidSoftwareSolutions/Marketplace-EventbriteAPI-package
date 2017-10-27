@@ -60,6 +60,14 @@ $app->post('/api/EventbriteAPI/getUserOwnedEvents', function ($request, $respons
             $body['status'] = $post_data['args']['status'];
         }
     }
+
+    if(!empty($post_data['args']['page'])) {
+        $body['page'] = $post_data['args']['page'];
+    }
+
+    if(!empty($post_data['args']['continuation'])) {
+        $body['continuation'] = $post_data['args']['continuation'];
+    }
     
     $client = $this->httpClient;
 
@@ -75,14 +83,14 @@ $app->post('/api/EventbriteAPI/getUserOwnedEvents', function ($request, $respons
         
         $all_data[] = $rawBody;
         
-        if($rawBody->pagination->page_count != 1) {
-            $pagin = $this->pager;
-            $ret = $pagin->page($query_str, 2, $headers, 'events');
-            
-            $merge = array_merge($all_data[0]->events, $ret);
-        
-            $all_data[0]->events = $merge;
-        }
+//        if($rawBody->pagination->page_count != 1) {
+//            $pagin = $this->pager;
+//            $ret = $pagin->page($query_str, 2, $headers, 'events');
+//
+//            $merge = array_merge($all_data[0]->events, $ret);
+//
+//            $all_data[0]->events = $merge;
+//        }
         
         if($resp->getStatusCode() == '200') {
             $result['callback'] = 'success';

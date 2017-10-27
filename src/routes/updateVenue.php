@@ -65,16 +65,26 @@ $app->post('/api/EventbriteAPI/updateVenue', function ($request, $response, $arg
         $body['venue.address.address_2'] = $post_data['args']['venueAddress2'];
     }
     if(!empty($post_data['args']['venueRegion'])) {
-        $body['venue.address.city'] = $post_data['args']['venueRegion'];
+        $body['venue.address.region'] = $post_data['args']['venueRegion'];
     }
     if(!empty($post_data['args']['venueCity'])) {
-        $body['venue.address.region'] = $post_data['args']['venueCity'];
+        $body['venue.address.city'] = $post_data['args']['venueCity'];
     }
     if(!empty($post_data['args']['venuePostalCode'])) {
         $body['venue.address.postal_code'] = $post_data['args']['venuePostalCode'];
     }
     if(!empty($post_data['args']['venueCountry'])) {
         $body['venue.address.country'] = $post_data['args']['venueCountry'];
+    }
+    if(!empty($post_data['args']['venueAddressCoordinates']))
+    {
+        $part = explode(',',$post_data['args']['venueAddressCoordinates']);
+
+        if(!empty($part[0]) && !empty($part[1]))
+        {
+            $body['venue.address.latitude'] = trim($part[0]);
+            $body['venue.address.longitude'] = trim($part[1]);
+        }
     }
     
     $client = $this->httpClient;
