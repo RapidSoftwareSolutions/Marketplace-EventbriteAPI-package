@@ -1359,7 +1359,8 @@
         },
         {
           "name": "showSeriesParent",
-          "type": "Boolean",
+          "type":"Select",
+          "options":["true","false"],
           "info": "True: Will show parent of a serie instead of children False: Will show children of a serie (Default value).",
           "required": false
         },
