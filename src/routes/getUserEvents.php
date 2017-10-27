@@ -42,7 +42,7 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['token'];
-    $headers['Content-Type'] = 'application/json';
+  //  $headers['Content-Type'] = 'application/json';
     $query_str = $settings['api_url'] . 'users/'.$post_data['args']['userId'].'/events/';
     
     $body = [];
@@ -74,7 +74,6 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
     if(!empty($post_data['args']['continuation'])) {
         $body['continuation'] = $post_data['args']['continuation'];
     }
-
 
 
     $client = $this->httpClient;

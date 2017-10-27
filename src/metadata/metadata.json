@@ -453,7 +453,25 @@
         },
         {
           "name": "groupBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "payment_method",
+            "payment_method_application",
+            "ticket",
+            "ticket_application",
+            "currency",
+            "event_currency",
+            "reserved_section",
+            "event",
+            "event_ticket",
+            "event_application",
+            "country",
+            "city",
+            "state",
+            "sales_channel_lvl_1",
+            "sales_channel_lvl_2",
+            "sales_channel_lvl_3"
+          ],
           "info": "Optional field to group data on (Valid choices are: payment_method, payment_method_application, ticket, ticket_application, currency, event_currency, reservedSection, event, event_ticket, event_application, country, city, state,sales_channel_lvl_1,sales_channel_lvl_2,sales_channel_lvl_3).",
           "required": false
         },
@@ -1352,7 +1370,8 @@
           "required": false,
           "structure": {
             "name": "status",
-            "type": "String",
+            "type": "Select",
+            "options":["all", "draft", "live", "canceled", "started", "ended"],
             "info": "Status",
             "required": false
           }
@@ -1407,12 +1426,7 @@
           "name": "orderBy",
           "type": "Select",
           "options": [
-            "all",
-            "draft",
-            "live",
-            "canceled",
-            "started",
-            "ended"
+            "start_asc", "start_desc", "created_asc", "created_desc"
           ],
           "info": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc).",
           "required": false
@@ -1431,7 +1445,8 @@
           "required": false,
           "structure": {
             "name": "status",
-            "type": "String",
+            "type": "Select",
+            "options":["all", "draft", "live", "canceled", "started", "ended"],
             "info": "Status",
             "required": false
           }
@@ -1483,6 +1498,12 @@
           "required": true
         },
         {
+          "name": "changedSince",
+          "type": "DatePicker",
+          "info": "Only return resource changed on or after the time given.",
+          "required": false
+        },
+        {
           "name": "status",
           "type": "Select",
           "options": [
@@ -1490,12 +1511,6 @@
             "not_attending"
           ],
           "info": "Limits results to either confirmed attendees or cancelled\/refunded\/etc. attendees (Valid choices are: attending, or not_attending).",
-          "required": false
-        },
-        {
-          "name": "changedSince",
-          "type": "DatePicker",
-          "info": "Only return resource changed on or after the time given.",
           "required": false
         }
       ],
@@ -1550,6 +1565,12 @@
           }
         },
         {
+          "name": "changedSince",
+          "type": "DatePicker",
+          "info": "Only return resource changed on or after the time given.",
+          "required": false
+        },
+        {
           "name": "excludeEmails",
           "type": "List",
           "info": "Don't include orders placed by any of these emails.",
@@ -1560,12 +1581,6 @@
             "info": "Email",
             "required": false
           }
-        },
-        {
-          "name": "changedSince",
-          "type": "DatePicker",
-          "info": "Only return resource changed on or after the time given.",
-          "required": false
         }
       ],
       "callbacks": [
@@ -3426,7 +3441,7 @@
         {
           "name": "showOrganizerFacebook",
           "type":"Select",
-          "options":["true"],
+          "options":["true","false"],
           "info": "Whether to display a link to the organizer\u2019s Facebook profile.",
           "required": false
         },
@@ -3610,6 +3625,12 @@
           "name": "minimumQuantity",
           "type": "Number",
           "info": "Minimum number per order.",
+          "required": false
+        },
+        {
+          "name": "maximumQuantity",
+          "type": "Number",
+          "info": "Maximum number per order.",
           "required": false
         },
         {
@@ -4115,12 +4136,6 @@
           }
         },
         {
-          "name": "quantityAvailable",
-          "type": "Number",
-          "info": "Number of discount uses.",
-          "required": false
-        },
-        {
           "name": "startDate",
           "type": "DatePicker",
           "info": "Allow use from this date.",
@@ -4130,6 +4145,12 @@
           "name": "endDate",
           "type": "DatePicker",
           "info": "Allow use until this date.",
+          "required": false
+        },
+        {
+          "name": "quantityAvailable",
+          "type": "Number",
+          "info": "Number of discount uses.",
           "required": false
         }
       ],
@@ -4231,12 +4252,6 @@
           }
         },
         {
-          "name": "quantityAvailable",
-          "type": "Number",
-          "info": "Number of discount uses.",
-          "required": false
-        },
-        {
           "name": "startDate",
           "type": "DatePicker",
           "info": "Allow use from this date.",
@@ -4246,6 +4261,12 @@
           "name": "endDate",
           "type": "DatePicker",
           "info": "Allow use until this date.",
+          "required": false
+        },
+        {
+          "name": "quantityAvailable",
+          "type": "Number",
+          "info": "Number of discount uses.",
           "required": false
         }
       ],
@@ -4335,12 +4356,6 @@
           }
         },
         {
-          "name": "quantityAvailable",
-          "type": "Number",
-          "info": "Number of discount uses.",
-          "required": false
-        },
-        {
           "name": "startDate",
           "type": "DatePicker",
           "info": "Allow use from this date.",
@@ -4350,6 +4365,12 @@
           "name": "endDate",
           "type": "DatePicker",
           "info": "Allow use until this date.",
+          "required": false
+        },
+        {
+          "name": "quantityAvailable",
+          "type": "Number",
+          "info": "Number of discount uses.",
           "required": false
         }
       ],
@@ -4451,12 +4472,6 @@
           }
         },
         {
-          "name": "quantityAvailable",
-          "type": "Number",
-          "info": "Number of discount uses.",
-          "required": false
-        },
-        {
           "name": "startDate",
           "type": "DatePicker",
           "info": "Allow use from this date.",
@@ -4466,6 +4481,12 @@
           "name": "endDate",
           "type": "DatePicker",
           "info": "Allow use until this date.",
+          "required": false
+        },
+        {
+          "name": "quantityAvailable",
+          "type": "Number",
+          "info": "Number of discount uses.",
           "required": false
         }
       ],
@@ -4577,12 +4598,6 @@
           }
         },
         {
-          "name": "quantityAvailable",
-          "type": "Number",
-          "info": "Number of uses.",
-          "required": false
-        },
-        {
           "name": "startDate",
           "type": "DatePicker",
           "info": "Allow use from this date.",
@@ -4592,6 +4607,12 @@
           "name": "endDate",
           "type": "DatePicker",
           "info": "Allow use until this date.",
+          "required": false
+        },
+        {
+          "name": "quantityAvailable",
+          "type": "Number",
+          "info": "Number of uses.",
           "required": false
         }
       ],
@@ -4681,12 +4702,6 @@
           }
         },
         {
-          "name": "quantityAvailable",
-          "type": "Number",
-          "info": "Number of uses.",
-          "required": false
-        },
-        {
           "name": "startDate",
           "type": "DatePicker",
           "info": "Allow use from this date.",
@@ -4696,6 +4711,12 @@
           "name": "endDate",
           "type": "DatePicker",
           "info": "Allow use until this date.",
+          "required": false
+        },
+        {
+          "name": "quantityAvailable",
+          "type": "Number",
+          "info": "Number of uses.",
           "required": false
         }
       ],
@@ -4721,16 +4742,16 @@
           "required": true
         },
         {
-          "name": "eventId",
-          "type": "String",
-          "info": "The ID of the event.",
-          "required": true
-        },
-        {
           "name": "changedSince",
           "type": "DatePicker",
           "info": "Only return transfers changed on or after the time given.",
           "required": false
+        },
+        {
+          "name": "eventId",
+          "type": "String",
+          "info": "The ID of the event.",
+          "required": true
         }
       ],
       "callbacks": [

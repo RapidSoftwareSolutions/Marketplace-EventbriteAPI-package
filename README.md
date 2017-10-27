@@ -873,6 +873,7 @@ Creates a new ticket class, returning the result as a ticket_class under the key
 | salesEnd                | DatePicker | Optional: When the ticket stops being on sale (leave empty for ‘one hour before event start’).
 | salesStartAfter         | String     | Optional: The ID of another ticket class - when it sells out, this class will go on sale.
 | minimumQuantity         | Number     | Optional: Minimum number per order.
+| maximumQuantity         | Number     | Optional: Maximum number per order.
 | autoHide                | Boolean    | Optional: Hide this ticket when it is not on sale.
 | autoHideBefore          | DatePicker | Optional: Override reveal date for auto-hide.
 | autoHideAfter           | DatePicker | Optional: Override re-hide date for auto-hide.

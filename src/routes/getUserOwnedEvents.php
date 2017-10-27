@@ -42,7 +42,7 @@ $app->post('/api/EventbriteAPI/getUserOwnedEvents', function ($request, $respons
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['token'];
-    $headers['Content-Type'] = 'application/json';
+  //  $headers['Content-Type'] = 'application/json';
     $query_str = $settings['api_url'] . 'users/'.$post_data['args']['userId'].'/owned_events/';
     
     $body = [];
