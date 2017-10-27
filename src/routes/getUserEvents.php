@@ -40,6 +40,7 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
         $result['contextWrites']['to']['fields'] = $error;
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
     }
+
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['token'];
   //  $headers['Content-Type'] = 'application/json';
@@ -52,7 +53,7 @@ $app->post('/api/EventbriteAPI/getUserEvents', function ($request, $response, $a
     if(!empty($post_data['args']['orderBy'])) {
         $body['order_by'] = $post_data['args']['orderBy'];
     }
-    if(isset($post_data['args']['show_series_parent']) && !empty($post_data['args']['showSeriesParent'])) {
+    if(!empty($post_data['args']['showSeriesParent'])) {
         $body['show_series_parent'] = filter_var($post_data['args']['showSeriesParent'], FILTER_VALIDATE_BOOLEAN);
     }
     if(!empty($post_data['args']['status'])) {
